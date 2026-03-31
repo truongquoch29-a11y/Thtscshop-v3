@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết Acc</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
+body.show{opacity:1}
+
+/* HEADER */
+.header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{width:45px;height:45px;border-radius:50%}
+.icon-group{display:flex;gap:10px}
+.icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer}
+
+/* MENU */
+.menu-btn span{display:block;width:18px;height:2px;background:#000;margin:3px 0}
+.side-menu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;transition:.3s;z-index:999;padding:15px}
+.side-menu.active{right:0}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:none}
+.overlay.active{display:block}
+.menu-item{padding:10px;border-radius:8px;margin-bottom:5px;font-weight:bold}
+.menu-item:hover{background:#eee}
+
+/* BANNER */
+.banner{
+height:160px;
+background:linear-gradient(45deg,#ff4500,#ff7f50);
+margin:10px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-weight:bold;
+font-size:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.2)
+}
+
+/* BOX */
+.box{margin:10px;background:#fff;border-radius:14px;padding:15px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+
+/* PRICE */
+.price{font-size:20px;font-weight:bold;color:#00aa7f}
+.old{color:#999;text-decoration:line-through;font-size:14px}
+
+/* IMAGE LIST */
+.img-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.img-list img{
+width:100%;
+border-radius:12px;
+height:180px;
+object-fit:cover;
+transition:.3s
+}
+.img-list img:hover{transform:scale(1.03)}
+
+/* INFO */
+.info-line{margin:6px 0;font-size:14px}
+
+/* BUTTON */
+.btn{
+margin-top:15px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#ff7f50,#ff4500);
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+animation:glow 1.5s infinite
+}
+
+@keyframes glow{
+0%{box-shadow:0 0 5px #ff4500}
+50%{box-shadow:0 0 18px #ff4500}
+100%{box-shadow:0 0 5px #ff4500}
+}
+
+/* FOOTER */
+.footer{background:#fff;text-align:center;padding:20px;margin-top:10px;border-top:1px solid #ddd}
+
+/* DARK */
+.dark{background:#111;color:#fff}
+.dark .header-box,.dark .box,.dark .footer,.dark .side-menu{background:#222;color:#fff}
+.dark .menu-btn span{background:#fff}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="side-menu" id="sideMenu">
+<h3>-- MAIN --</h3>
+<div class="menu-item" onclick="goPage('../index.html')">🏠 Trang chủ</div>
+
+<h3>-- SHOP ACC --</h3>
+<div class="menu-item" onclick="goPage('../vip.html')">💎 Acc VIP</div>
+<div class="menu-item" onclick="goPage('../clone.html')">🧩 Acc Clone</div>
+<div class="menu-item" onclick="goPage('../thuong.html')">📦 Acc Thường</div>
+</div>
+
+<div class="header-box">
+<div class="logo-wrap">
+<img src="../images/logo.png" class="logo-img">
+<b>THTSC SHOP</b>
+</div>
+<div class="icon-group">
+<button class="icon-btn" onclick="toggleMode()" id="modeBtn">🌙</button>
+<button class="icon-btn menu-btn" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+
+<div class="banner" id="accId">ACC VIP</div>
+
+<div class="box">
+<div class="price" id="priceNew"></div>
+<div class="old" id="priceOld"></div>
+
+<div class="img-list" id="imgList"></div>
+
+<div class="info-line">⚠️ Acc dính xác minh</div>
+<div class="info-line">🚫 Game không bảo hành</div>
+<div class="info-line">🆔 Mã acc: <span id="accCode"></span></div>
+
+<hr>
+
+<div class="info-line">✨ Acc có:</div>
+<div class="info-line">✔️ Skin đẹp</div>
+<div class="info-line">✔️ Rank cao</div>
+<div class="info-line">✔️ Nhiều vật phẩm</div>
+
+<button class="btn">MUA NGAY</button>
+</div>
+
+<div class="footer">
+<b>HỖ TRỢ KHÁCH HÀNG</b>
+<div>Liên hệ nhanh để được hỗ trợ</div>
+</div>
+
+<script>
+function toggleMode(){
+ document.body.classList.toggle('dark');
+ localStorage.setItem('mode', document.body.classList.contains('dark')?'dark':'light');
+}
+
+function loadMode(){
+ if(localStorage.getItem('mode')==='dark'){
+  document.body.classList.add('dark');
+ }
+}
+
+function goPage(link){window.location.href=link}
+
+function toggleMenu(){
+ document.getElementById('sideMenu').classList.toggle('active');
+ document.getElementById('overlay').classList.toggle('active');
+}
+
+function closeMenu(){
+ document.getElementById('sideMenu').classList.remove('active');
+ document.getElementById('overlay').classList.remove('active');
+}
+
+/* LOAD DATA */
+const id = localStorage.getItem('acc_id');
+const priceNew = localStorage.getItem('price_new');
+const priceOld = localStorage.getItem('price_old');
+
+document.getElementById('accId').textContent = id;
+document.getElementById('accCode').textContent = id;
+document.getElementById('priceNew').textContent = priceNew;
+document.getElementById('priceOld').textContent = priceOld;
+
+/* LOAD ẢNH (tối đa 5 ảnh, thiếu vẫn chạy) */
+let imgBox = document.getElementById('imgList');
+for(let i=1;i<=5;i++){
+ let img=document.createElement('img');
+ img.src = "../vip/images/"+id+"m"+i+".png";
+ img.onerror = function(){this.style.display='none'};
+ imgBox.appendChild(img);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ loadMode();
+ setTimeout(()=>{document.body.classList.add('show')},50);
+});
+</script>
+
+</body>
+</html>
