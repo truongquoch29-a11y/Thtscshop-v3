@@ -9,32 +9,24 @@
 body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
 body.show{opacity:1}
 
-/* HEADER + MENU + FOOTER giữ nguyên VIP */
+/* HEADER */
 .header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 .logo-wrap{display:flex;align-items:center;gap:10px}
 .logo-img{width:45px;height:45px;border-radius:50%}
 .icon-group{display:flex;gap:10px}
-.icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px}
+.icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer}
+
+/* MENU */
 .menu-btn span{display:block;width:18px;height:2px;background:#000;margin:3px 0}
-
-.side-menu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;transition:.3s;z-index:999;padding:15px}
+.side-menu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;transition:.3s;z-index:999;padding:15px;overflow:auto}
 .side-menu.active{right:0}
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:none}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:none;z-index:998}
 .overlay.active{display:block}
-
 .menu-item{padding:10px;border-radius:8px;margin-bottom:5px;font-weight:bold}
 .menu-item:hover{background:#eee}
 
 /* NOTICE */
-.notice{
- margin:10px;
- background:#fff;
- border-radius:12px;
- padding:12px;
- box-shadow:0 5px 15px rgba(0,0,0,.1);
- font-size:13px;
- line-height:1.6
-}
+.notice{margin:10px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 5px 15px rgba(0,0,0,.1);font-size:13px;line-height:1.6}
 
 /* GRID */
 .container{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -44,46 +36,38 @@ body.show{opacity:1}
 .card-img{height:150px;position:relative}
 .card-img img{width:100%;height:100%;object-fit:cover}
 
-.badge-id{
- position:absolute;top:8px;left:8px;
- background:#1e90ff;color:#fff;
- padding:4px 10px;border-radius:20px;font-size:12px
-}
+.badge-id{position:absolute;top:8px;left:8px;background:#1e90ff;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px}
+.stock{position:absolute;top:8px;right:8px;background:#000;color:#fff;padding:3px 8px;font-size:11px;border-radius:6px}
 
-.stock{
- position:absolute;
- top:8px;
- right:8px;
- background:#000;
- color:#fff;
- padding:3px 8px;
- font-size:11px;
- border-radius:6px
-}
-
-.price-tag{
- position:absolute;bottom:8px;right:8px;
- background:rgba(0,0,0,.7);
- padding:6px 10px;border-radius:10px
-}
+.price-tag{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:6px 10px;border-radius:10px}
 .price-new{color:#00ffae;font-weight:bold}
 .price-old{color:#ccc;text-decoration:line-through;font-size:11px}
 
 .card-body{padding:10px;font-size:13px}
 .btn-buy{margin-top:8px;width:100%;padding:8px;border:none;border-radius:20px;background:#1e90ff;color:#fff}
 
-/* FOOTER */
-.footer{background:#fff;text-align:center;padding:20px;border-top:1px solid #ddd}
+/* FOOTER (GIỐNG INDEX) */
+.footer{background:#fff;color:#000;text-align:center;padding:20px;border-top:1px solid #ddd}
 .footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
-.footer button{background:#eee;border:none;padding:10px;border-radius:20px}
+.footer button{background:#eee;border:none;padding:10px;border-radius:20px;cursor:pointer}
+
+/* POPUP */
+.popup{position:fixed;bottom:20px;right:20px;background:#111;color:#fff;padding:10px 14px;border-radius:10px;font-size:13px;opacity:0;transform:translateY(20px);transition:.4s}
+.popup.show{opacity:1;transform:translateY(0)}
 </style>
 </head>
 
 <body>
 
-<div class="overlay" id="overlay"></div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
+<!-- MENU ĐẦY ĐỦ -->
 <div class="side-menu" id="sideMenu">
+<div style="text-align:center;margin-bottom:10px">
+<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%">
+<b>MENU</b>
+</div>
+
 <h3>-- MAIN --</h3>
 <div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
 
@@ -99,21 +83,29 @@ body.show{opacity:1}
 <div class="menu-item" onclick="goPage('dautruong.html')">🏆 Cày Đấu Trường</div>
 </div>
 
+<!-- HEADER -->
 <div class="header-box">
 <div class="logo-wrap">
 <img src="images/logo.png" class="logo-img">
 <b>THTSC SHOP</b>
 </div>
+<div class="icon-group">
+<button class="icon-btn menu-btn" onclick="toggleMenu(this)">
+<span></span><span></span><span></span>
+</button>
+</div>
 </div>
 
+<!-- NOTICE -->
 <div class="notice">
 📢 <b>THÔNG TIN ACC CLONE</b><br><br>
 🔹 Cần acc Google chưa vào game để liên kết<br>
-🔹 Acc clone chia theo từng mức giá / độ mạnh<br>
-🔹 Giao acc nhanh sau khi thanh toán<br>
-🔹 Hỗ trợ nếu lỗi trong quá trình nhận acc
+🔹 Acc clone chia theo từng mức / giá<br>
+🔹 Giao nhanh sau khi thanh toán<br>
+🔹 Hỗ trợ nếu lỗi
 </div>
 
+<!-- LIST -->
 <div class="container">
 
 <div class="card">
@@ -134,18 +126,43 @@ Clone cơ bản • Dễ liên kết
 
 </div>
 
+<!-- FOOTER CHUẨN -->
 <div class="footer">
 <b>HỖ TRỢ KHÁCH HÀNG</b>
+<div>Liên hệ nhanh để được hỗ trợ và tư vấn</div>
 <div class="btn-group">
 <button onclick="goLink('https://zalo.me/0123456789')">📞 Zalo</button>
-<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group</button>
+<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group Zalo</button>
+<button onclick="goLink('https://facebook.com')">📘 Facebook</button>
 </div>
 </div>
 
+<div id="popup" class="popup">🧩 Acc clone mới đã cập nhật!</div>
+
 <script>
 function goPage(l){window.location.href=l}
-function goLink(l){window.open(l)}
-document.addEventListener('DOMContentLoaded',()=>{document.body.classList.add('show')})
+function goLink(l){window.open(l,'_blank')}
+
+function toggleMenu(btn){
+ document.getElementById('sideMenu').classList.toggle('active');
+ document.getElementById('overlay').classList.toggle('active');
+}
+
+function closeMenu(){
+ document.getElementById('sideMenu').classList.remove('active');
+ document.getElementById('overlay').classList.remove('active');
+}
+
+function showPopup(){
+ let p=document.getElementById('popup');
+ p.classList.add('show');
+ setTimeout(()=>{p.classList.remove('show')},3000);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ setTimeout(()=>{document.body.classList.add('show')},50);
+ setTimeout(showPopup,500);
+});
 </script>
 
 </body>
