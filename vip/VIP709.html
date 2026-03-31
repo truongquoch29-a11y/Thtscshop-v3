@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết Acc</title>
+
+<style>
+body{font-family:Arial;margin:0;background:#f2f2f2;opacity:0;transition:.3s}
+body.show{opacity:1}
+.box{margin:10px;background:#fff;padding:15px;border-radius:12px}
+.price{font-size:22px;color:#00aa7f;font-weight:bold}
+.img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-top:10px}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2 id="accId"></h2>
+<div class="price" id="priceNew"></div>
+
+<div id="imgs"></div>
+
+<p>⚠️ Acc dính xác minh</p>
+<p>🚫 Game không bảo hành</p>
+<p>🆔 Mã acc: <span id="code"></span></p>
+</div>
+
+<script>
+let path = window.location.pathname;
+let id = path.substring(path.lastIndexOf('/')+1).replace('.html','');
+
+document.getElementById('accId').textContent = id;
+document.getElementById('code').textContent = id;
+
+document.getElementById('priceNew').textContent = localStorage.getItem('price_new');
+
+let box = document.getElementById('imgs');
+for(let i=1;i<=5;i++){
+ let img=document.createElement('img');
+ img.src = "images/"+id+"m"+i+".png";
+ img.className="img";
+ img.onerror=function(){this.style.display='none'};
+ box.appendChild(img);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ setTimeout(()=>document.body.classList.add('show'),50);
+});
+</script>
+
+</body>
+</html>
