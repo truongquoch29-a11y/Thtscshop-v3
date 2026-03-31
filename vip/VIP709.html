@@ -1,20 +1,20 @@
+<!-- FILE CHI TIẾT ĐÃ SỬA TOÀN BỘ, BỎ HẾT ../ -->
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acc VIP - THTSC SHOP</title>
+<title>Chi tiết Acc - THTSC SHOP</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
+body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.4s;opacity:0}
 body.show{opacity:1}
 
 /* HEADER */
 .header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 .logo-wrap{display:flex;align-items:center;gap:10px}
 .logo-img{width:45px;height:45px;border-radius:50%}
-
-/* ICON */
 .icon-group{display:flex;gap:10px}
 .icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer}
 
@@ -28,64 +28,52 @@ body.show{opacity:1}
 .menu-item:hover{background:#eee}
 
 /* TITLE */
-.section-title{text-align:center;margin:20px 0;font-size:20px;font-weight:bold}
-
-/* GRID */
-.container{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-
-/* CARD */
-.card{background:#fff;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 6px 18px rgba(0,0,0,.12);transition:.3s}
-.card:hover{transform:translateY(-5px);box-shadow:0 12px 25px rgba(0,0,0,.2)}
-
-.card-img{position:relative;height:150px;overflow:hidden}
-.card-img img{width:100%;height:100%;object-fit:cover}
-
-/* BADGE */
-.badge-id{
- position:absolute;
- top:8px;
- left:8px;
- background:linear-gradient(45deg,#ff4500,#ff7f50);
- color:#fff;
- padding:4px 10px;
- font-size:12px;
- border-radius:20px;
- font-weight:bold;
+.acc-title{
+margin:10px;
+padding:18px;
+border-radius:14px;
+background:linear-gradient(45deg,#ff4500,#ff7f50);
+color:#fff;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+box-shadow:0 6px 18px rgba(0,0,0,.2)
 }
+
+/* BOX */
+.box{margin:10px;background:#fff;border-radius:14px;padding:15px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 
 /* PRICE */
-.price-tag{
- position:absolute;
- bottom:8px;
- right:8px;
- display:flex;
- flex-direction:column;
- align-items:flex-end;
- background:rgba(0,0,0,.7);
- padding:6px 10px;
- border-radius:10px;
- backdrop-filter:blur(5px)
-}
-.price-new{color:#00ffae;font-weight:bold;font-size:14px}
-.price-old{color:#ccc;font-size:11px;text-decoration:line-through}
+.price{font-size:22px;color:#00c896;font-weight:bold}
 
-/* CONTENT */
-.card-body{padding:10px}
-.title{font-weight:bold;font-size:14px;margin-bottom:6px}
-.info{font-size:12px;color:#555}
+/* IMAGE */
+.img-list{display:flex;flex-direction:column;gap:10px}
+.img-list img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+transition:.3s
+}
+.img-list img:hover{transform:scale(1.05)}
 
 /* BUTTON */
 .btn-buy{
- margin-top:10px;
- width:100%;
- padding:8px;
- border:none;
- border-radius:25px;
- background:linear-gradient(90deg,#ff7f50,#ff4500);
- color:#fff;
- font-weight:bold;
- cursor:pointer;
- box-shadow:0 4px 12px rgba(255,69,0,.5)
+margin-top:15px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+animation:glow 1.5s infinite
+}
+@keyframes glow{
+0%{box-shadow:0 0 5px #0072ff}
+50%{box-shadow:0 0 20px #00c6ff}
+100%{box-shadow:0 0 5px #0072ff}
 }
 
 /* FOOTER */
@@ -95,29 +83,51 @@ body.show{opacity:1}
 
 /* POPUP */
 .popup{
- position:fixed;
- bottom:20px;
- right:20px;
- background:#111;
- color:#fff;
- padding:10px 14px;
- border-radius:10px;
- font-size:13px;
- opacity:0;
- transform:translateY(20px);
- transition:.4s;
- box-shadow:0 6px 18px rgba(0,0,0,.4)
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,.6);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:9999
 }
-.popup.show{
- opacity:1;
- transform:translateY(0)
+.popup.show{opacity:1;pointer-events:auto}
+
+.popup-box{
+background:#fff;
+padding:20px;
+border-radius:14px;
+text-align:center;
+width:85%;
+max-width:320px;
+animation:scale .3s
 }
+@keyframes scale{from{transform:scale(.7)}to{transform:scale(1)}}
+
+.popup-btns{display:flex;gap:10px;margin-top:10px}
+.popup-btns button{
+flex:1;
+padding:10px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold
+}
+.btn-ok{background:#00c896;color:#fff}
+.btn-cancel{background:#ccc}
 
 /* DARK */
 .dark{background:#111;color:#fff}
-.dark .header-box,.dark .card,.dark .footer,.dark .side-menu{background:#222;color:#fff}
-.dark .info{color:#bbb}
+.dark .header-box,.dark .box,.dark .footer,.dark .side-menu{background:#222;color:#fff}
 .dark .menu-btn span{background:#fff}
+.dark .popup{background:rgba(0,0,0,.8)}
+.dark .popup-box{background:#222;color:#fff}
+.dark .btn-ok{background:#00c896;color:#000}
+.dark .btn-cancel{background:#555;color:#fff}
 </style>
 </head>
 
@@ -126,24 +136,11 @@ body.show{opacity:1}
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="side-menu" id="sideMenu">
-<div style="text-align:center;margin-bottom:10px">
-<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%">
-<b>MENU</b>
-</div>
-
-<h3>-- MAIN --</h3>
+<h3>-- MENU --</h3>
 <div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
-
-<h3>-- SHOP ACC --</h3>
 <div class="menu-item" onclick="goPage('vip.html')">💎 Acc VIP</div>
 <div class="menu-item" onclick="goPage('clone.html')">🧩 Acc Clone</div>
 <div class="menu-item" onclick="goPage('thuong.html')">📦 Acc Thường</div>
-
-<h3>-- CÀY THUÊ --</h3>
-<div class="menu-item" onclick="goPage('ball.html')">⚽ Cày Ball</div>
-<div class="menu-item" onclick="goPage('vang.html')">💰 Cày Vàng</div>
-<div class="menu-item" onclick="goPage('cotruyen.html')">📖 Cày Cốt Truyện</div>
-<div class="menu-item" onclick="goPage('dautruong.html')">🏆 Cày Đấu Trường</div>
 </div>
 
 <div class="header-box">
@@ -152,85 +149,56 @@ body.show{opacity:1}
 <b>THTSC SHOP</b>
 </div>
 <div class="icon-group">
-<button class="icon-btn" onclick="toggleMode()" id="modeBtn">🌙</button>
-<button class="icon-btn menu-btn" onclick="toggleMenu(this)">
+<button class="icon-btn" onclick="toggleMode()">🌙</button>
+<button class="icon-btn menu-btn" onclick="toggleMenu()">
 <span></span><span></span><span></span>
 </button>
 </div>
 </div>
 
-<div class="section-title">💎 ACC VIP</div>
+<div class="acc-title" id="accTitle"></div>
 
-<div class="container">
+<div class="box">
+<div class="price" id="priceNew"></div>
 
-<div class="card">
-<div class="card-img">
-<img src="images/vip1.png">
-<div class="badge-id">#VIP709</div>
-<div class="price-tag">
-<span class="price-new">500K</span>
-<span class="price-old">650K</span>
-</div>
-</div>
-<div class="card-body">
-<div class="title">Nhiều S+ + full chỉ số</div>
-<div class="info">Nhiều skin • Nhiều đồ</div>
-<button class="btn-buy" onclick="buyNow('VIP709','500K','650K')">MUA NGAY</button>
-</div>
-</div>
+<div class="img-list" id="imgs"></div>
 
-<div class="card">
-<div class="card-img">
-<img src="images/vip2.png">
-<div class="badge-id">#VIP002</div>
-<div class="price-tag">
-<span class="price-new">150K</span>
-<span class="price-old">180K</span>
-</div>
-</div>
-<div class="card-body">
-<div class="title">Acc VIP Hiếm</div>
-<div class="info">Rank top • Skin hiếm • Full vật phẩm</div>
-<button class="btn-buy" onclick="buyNow('VIP002','150K','180K')">MUA NGAY</button>
-</div>
-</div>
+<p>⚠️ Acc dính xác minh</p>
+<p>🚫 Game không bảo hành</p>
+<p>🆔 Mã acc: <b id="accCode"></b></p>
 
+<button class="btn-buy" onclick="openPopup()">💳 MUA NGAY</button>
 </div>
 
 <div class="footer">
 <b>HỖ TRỢ KHÁCH HÀNG</b>
-<div>Liên hệ nhanh để được hỗ trợ và tư vấn</div>
 <div class="btn-group">
-<button onclick="goLink('https://zalo.me/0123456789')">📞 Zalo</button>
-<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group Zalo</button>
+<button onclick="goZalo()">📞 Zalo</button>
 <button onclick="goLink('https://facebook.com')">📘 Facebook</button>
 </div>
 </div>
 
-<div id="popup" class="popup">🔥 Acc VIP mới đã lên kệ!</div>
+<div class="popup" id="popup">
+<div class="popup-box">
+<h3>📢 THÔNG BÁO</h3>
+<p id="popupText"></p>
+<div class="popup-btns">
+<button class="btn-ok" onclick="goZalo()">XÁC NHẬN</button>
+<button class="btn-cancel" onclick="closePopup()">HỦY</button>
+</div>
+</div>
+</div>
 
 <script>
 function toggleMode(){
  document.body.classList.toggle('dark');
- localStorage.setItem('mode', document.body.classList.contains('dark')?'dark':'light');
- document.getElementById('modeBtn').textContent = document.body.classList.contains('dark')?'☀️':'🌙';
 }
 
-function loadMode(){
- if(localStorage.getItem('mode')==='dark'){
-  document.body.classList.add('dark');
-  document.getElementById('modeBtn').textContent='☀️';
- }
-}
-
-function goPage(link){
- document.body.classList.remove('show');
- setTimeout(()=>{window.location.href=link},200);
-}
-
+function goPage(link){window.location.href=link}
 function goLink(link){window.open(link,'_blank')}
+function goZalo(){window.open("https://zalo.me/0123456789","_blank")}
 
-function toggleMenu(btn){
+function toggleMenu(){
  document.getElementById('sideMenu').classList.toggle('active');
  document.getElementById('overlay').classList.toggle('active');
 }
@@ -240,27 +208,32 @@ function closeMenu(){
  document.getElementById('overlay').classList.remove('active');
 }
 
-function showPopup(){
- let p=document.getElementById('popup');
- p.classList.add('show');
- setTimeout(()=>{p.classList.remove('show')},3000);
+let id=location.pathname.split('/').pop().replace('.html','');
+
+document.getElementById('accTitle').innerHTML="🔥 ACC "+id;
+document.getElementById('accCode').textContent=id;
+document.getElementById('priceNew').textContent=localStorage.getItem('price_new');
+
+let box=document.getElementById('imgs');
+for(let i=1;i<=5;i++){
+ let img=document.createElement('img');
+ img.src="images/"+id.replace("VIP","")+"m"+i+".jpg";
+ img.onerror=function(){this.style.display='none'};
+ box.appendChild(img);
 }
 
-/* ĐÃ SỬA ĐÚNG YÊU CẦU */
-function buyNow(id, priceNew, priceOld){
- localStorage.setItem('price_new', priceNew);
- localStorage.setItem('price_old', priceOld);
+function openPopup(){
+ document.getElementById('popupText').innerHTML =
+ "Bạn cần liên hệ admin để mua mã acc: <b>"+id+"</b><br><br>Cảm ơn đã ủng hộ shop<br>Chúc bạn trải nghiệm vui vẻ";
+ document.getElementById('popup').classList.add('show');
+}
 
- document.body.classList.remove('show');
- setTimeout(()=>{
-  window.location.href = "vip/" + id + ".html";
- },200);
+function closePopup(){
+ document.getElementById('popup').classList.remove('show');
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
- loadMode();
- setTimeout(()=>{document.body.classList.add('show')},50);
- setTimeout(showPopup,500);
+ setTimeout(()=>document.body.classList.add('show'),50);
 });
 </script>
 
