@@ -6,14 +6,16 @@
 <title>Acc VIP - THTSC SHOP</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s}
+body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
+body.show{opacity:1}
 
 /* HEADER */
-.header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 .logo-wrap{display:flex;align-items:center;gap:10px}
 .logo-img{width:45px;height:45px;border-radius:50%}
-.logo-text{font-weight:bold;font-size:16px;text-shadow:1px 1px 2px #aaa}
+.logo-text{font-weight:bold}
 
+/* ICON */
 .icon-group{display:flex;gap:10px}
 .icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer}
 
@@ -21,30 +23,87 @@ body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s}
 .menu-btn span{display:block;width:18px;height:2px;background:#000;margin:3px 0}
 .side-menu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;transition:.3s;z-index:999;padding:15px}
 .side-menu.active{right:0}
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:none;z-index:998}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:none}
 .overlay.active{display:block}
-.menu-item{padding:10px;border-radius:8px;cursor:pointer;margin-bottom:5px;font-weight:bold}
+.menu-item{padding:10px;border-radius:8px;margin-bottom:5px;font-weight:bold}
 .menu-item:hover{background:#eee}
 
 /* TITLE */
-.section-title{text-align:center;font-weight:bold;margin:20px 0;font-size:20px}
+.section-title{text-align:center;margin:20px 0;font-size:20px;font-weight:bold}
 
-/* ACC GRID */
-.container{padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#fff;border-radius:12px;overflow:hidden;text-align:center;transition:.3s}
-.card:hover{transform:scale(1.05)}
-.card img{width:100%;height:140px;object-fit:cover}
-.card h3{margin:8px;font-size:15px}
-.card p{font-size:13px;margin:0 0 8px}
-.card button{margin-bottom:10px;padding:6px 14px;border:none;border-radius:20px;background:#ff4500;color:#fff;cursor:pointer}
+/* GRID */
+.container{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* CARD */
+.card{background:#fff;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 6px 18px rgba(0,0,0,.12);transition:.3s}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 25px rgba(0,0,0,.2)}
+
+/* IMAGE */
+.card-img{position:relative;height:150px;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover}
+
+/* BADGE ID */
+.badge-id{
+ position:absolute;
+ top:8px;
+ left:8px;
+ background:linear-gradient(45deg,#ff4500,#ff7f50);
+ color:#fff;
+ padding:4px 10px;
+ font-size:12px;
+ border-radius:20px;
+ font-weight:bold;
+ box-shadow:0 3px 10px rgba(0,0,0,.3)
+}
+
+/* PRICE */
+.price{
+ position:absolute;
+ bottom:8px;
+ right:8px;
+ background:#000;
+ color:#fff;
+ padding:4px 10px;
+ font-size:13px;
+ border-radius:6px;
+ font-weight:bold
+}
+
+/* CONTENT */
+.card-body{padding:10px}
+.title{font-weight:bold;font-size:14px;margin-bottom:6px}
+.info{font-size:12px;color:#555;line-height:1.4}
+
+/* BUTTON */
+.btn-buy{
+ margin-top:10px;
+ width:100%;
+ padding:8px;
+ border:none;
+ border-radius:25px;
+ background:linear-gradient(90deg,#ff7f50,#ff4500);
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer;
+ transition:.3s;
+ box-shadow:0 4px 12px rgba(255,69,0,.5)
+}
+.btn-buy:hover{
+ transform:scale(1.07);
+ box-shadow:0 6px 18px rgba(255,69,0,.8)
+}
 
 /* FOOTER */
-.footer{background:#fff;text-align:center;padding:20px;margin-top:20px}
+.footer{background:#fff;text-align:center;padding:20px;border-top:1px solid #ddd}
+.footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.footer button{background:#eee;border:none;padding:10px;border-radius:20px}
 
-/* DARK MODE */
+/* DARK */
 .dark{background:#111;color:#fff}
 .dark .header-box,.dark .card,.dark .footer,.dark .side-menu{background:#222;color:#fff}
 .dark .menu-item:hover{background:#333}
+.dark .info{color:#bbb}
+.dark .price{background:#111}
 .dark .menu-btn span{background:#fff}
 </style>
 </head>
@@ -54,18 +113,14 @@ body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s}
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="side-menu" id="sideMenu">
-<div style="text-align:center;margin-bottom:10px">
-<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%">
-<b>MENU</b>
-</div>
-
 <h3>-- MAIN --</h3>
 <div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
 
 <h3>-- SHOP ACC --</h3>
-<div class="menu-item" onclick="goPage('vip.html')">💎 Acc VIP</div>
-<div class="menu-item" onclick="goPage('clone.html')">🧩 Acc Clone</div>
-<div class="menu-item" onclick="goPage('thuong.html')">📦 Acc Thường</div>
+<div class="menu-item">💎 Acc VIP</div>
+
+<h3>-- CÀY THUÊ --</h3>
+<div class="menu-item" onclick="goPage('ball.html')">⚽ Cày Ball</div>
 </div>
 
 <div class="header-box">
@@ -84,24 +139,51 @@ body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s}
 <div class="section-title">💎 ACC VIP</div>
 
 <div class="container">
+
 <div class="card">
+<div class="card-img">
 <img src="images/vip.png">
-<h3>Acc VIP #001</h3>
-<p>Full skin - Rank cao</p>
-<button>Mua ngay</button>
+<div class="badge-id">#VIP001</div>
+<div class="price">120K</div>
+</div>
+<div class="card-body">
+<div class="title">Full Skin + Rank Cao</div>
+<div class="info">
+• Rank: Cao<br>
+• Skin: Full<br>
+• Vật phẩm: Nhiều
+</div>
+<button class="btn-buy">MUA NGAY</button>
+</div>
 </div>
 
 <div class="card">
+<div class="card-img">
 <img src="images/vip.png">
-<h3>Acc VIP #002</h3>
-<p>Nhiều vật phẩm</p>
-<button>Mua ngay</button>
+<div class="badge-id">#VIP002</div>
+<div class="price">150K</div>
 </div>
+<div class="card-body">
+<div class="title">Acc VIP Siêu Hiếm</div>
+<div class="info">
+• Rank: Top<br>
+• Skin: Hiếm<br>
+• Vật phẩm: Đầy đủ
+</div>
+<button class="btn-buy">MUA NGAY</button>
+</div>
+</div>
+
 </div>
 
 <div class="footer">
 <b>HỖ TRỢ KHÁCH HÀNG</b>
-<div>Liên hệ Zalo để được hỗ trợ</div>
+<div>Liên hệ nhanh để được hỗ trợ và tư vấn</div>
+<div class="btn-group">
+<button onclick="goLink('https://zalo.me/0123456789')">📞 Zalo</button>
+<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group Zalo</button>
+<button onclick="goLink('https://facebook.com')">📘 Facebook</button>
+</div>
 </div>
 
 <script>
@@ -118,19 +200,29 @@ function loadMode(){
  }
 }
 
+function goPage(link){
+ document.body.classList.remove('show');
+ setTimeout(()=>{window.location.href=link},200);
+}
+
+function goLink(link){window.open(link,'_blank')}
+
 function toggleMenu(btn){
  document.getElementById('sideMenu').classList.toggle('active');
  document.getElementById('overlay').classList.toggle('active');
+ btn.classList.toggle('active');
 }
 
 function closeMenu(){
  document.getElementById('sideMenu').classList.remove('active');
  document.getElementById('overlay').classList.remove('active');
+ document.querySelector('.menu-btn').classList.remove('active');
 }
 
-function goPage(link){window.location.href=link}
-
-document.addEventListener('DOMContentLoaded',loadMode);
+document.addEventListener('DOMContentLoaded',()=>{
+ loadMode();
+ setTimeout(()=>{document.body.classList.add('show')},50);
+});
 </script>
 
 </body>
