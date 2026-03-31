@@ -13,7 +13,6 @@ body.show{opacity:1}
 .header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 .logo-wrap{display:flex;align-items:center;gap:10px}
 .logo-img{width:45px;height:45px;border-radius:50%}
-.logo-text{font-weight:bold}
 
 /* ICON */
 .icon-group{display:flex;gap:10px}
@@ -54,7 +53,7 @@ body.show{opacity:1}
  font-weight:bold;
 }
 
-/* PRICE UI */
+/* PRICE */
 .price-tag{
  position:absolute;
  bottom:8px;
@@ -88,12 +87,31 @@ body.show{opacity:1}
  cursor:pointer;
  box-shadow:0 4px 12px rgba(255,69,0,.5)
 }
-.btn-buy:hover{transform:scale(1.05)}
 
 /* FOOTER */
 .footer{background:#fff;color:#000;text-align:center;padding:20px;border-top:1px solid #ddd}
 .footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
 .footer button{background:#eee;border:none;padding:10px;border-radius:20px}
+
+/* POPUP */
+.popup{
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ background:#111;
+ color:#fff;
+ padding:10px 14px;
+ border-radius:10px;
+ font-size:13px;
+ opacity:0;
+ transform:translateY(20px);
+ transition:.4s;
+ box-shadow:0 6px 18px rgba(0,0,0,.4)
+}
+.popup.show{
+ opacity:1;
+ transform:translateY(0)
+}
 
 /* DARK */
 .dark{background:#111;color:#fff}
@@ -108,11 +126,18 @@ body.show{opacity:1}
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="side-menu" id="sideMenu">
+<div style="text-align:center;margin-bottom:10px">
+<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%">
+<b>MENU</b>
+</div>
+
 <h3>-- MAIN --</h3>
 <div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
 
 <h3>-- SHOP ACC --</h3>
-<div class="menu-item">💎 Acc VIP</div>
+<div class="menu-item" onclick="goPage('vip.html')">💎 Acc VIP</div>
+<div class="menu-item" onclick="goPage('clone.html')">🧩 Acc Clone</div>
+<div class="menu-item" onclick="goPage('thuong.html')">📦 Acc Thường</div>
 
 <h3>-- CÀY THUÊ --</h3>
 <div class="menu-item" onclick="goPage('ball.html')">⚽ Cày Ball</div>
@@ -124,7 +149,7 @@ body.show{opacity:1}
 <div class="header-box">
 <div class="logo-wrap">
 <img src="images/logo.png" class="logo-img">
-<div class="logo-text">THTSC SHOP</div>
+<b>THTSC SHOP</b>
 </div>
 <div class="icon-group">
 <button class="icon-btn" onclick="toggleMode()" id="modeBtn">🌙</button>
@@ -182,6 +207,8 @@ body.show{opacity:1}
 </div>
 </div>
 
+<div id="popup" class="popup">🔥 Acc VIP mới đã lên kệ!</div>
+
 <script>
 function toggleMode(){
  document.body.classList.toggle('dark');
@@ -213,9 +240,16 @@ function closeMenu(){
  document.getElementById('overlay').classList.remove('active');
 }
 
+function showPopup(){
+ let p=document.getElementById('popup');
+ p.classList.add('show');
+ setTimeout(()=>{p.classList.remove('show')},3000);
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
  loadMode();
  setTimeout(()=>{document.body.classList.add('show')},50);
+ setTimeout(showPopup,500);
 });
 </script>
 
