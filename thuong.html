@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acc Thường - THTSC SHOP</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
+body.show{opacity:1}
+
+/* HEADER */
+.header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{width:45px;height:45px;border-radius:50%}
+.icon-group{display:flex;gap:10px}
+.icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer}
+
+/* MENU */
+.menu-btn span{display:block;width:18px;height:2px;background:#000;margin:3px 0}
+.side-menu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;transition:.3s;z-index:999;padding:15px}
+.side-menu.active{right:0}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:none}
+.overlay.active{display:block}
+.menu-item{padding:10px;border-radius:8px;margin-bottom:5px;font-weight:bold}
+.menu-item:hover{background:#eee}
+
+/* TITLE */
+.section-title{text-align:center;margin:20px 0;font-size:20px;font-weight:bold}
+
+/* GRID */
+.container{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* CARD */
+.card{background:#fff;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 6px 18px rgba(0,0,0,.12);transition:.3s}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 25px rgba(0,0,0,.2)}
+
+.card-img{position:relative;height:150px;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover}
+
+/* BADGE */
+.badge-id{
+ position:absolute;
+ top:8px;
+ left:8px;
+ background:#666;
+ color:#fff;
+ padding:4px 10px;
+ font-size:12px;
+ border-radius:20px;
+ font-weight:bold;
+}
+
+/* PRICE */
+.price-tag{
+ position:absolute;
+ bottom:8px;
+ right:8px;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-end;
+ background:rgba(0,0,0,.7);
+ padding:6px 10px;
+ border-radius:10px;
+}
+.price-new{color:#00ffae;font-weight:bold;font-size:14px}
+.price-old{color:#ccc;font-size:11px;text-decoration:line-through}
+
+/* CONTENT */
+.card-body{padding:10px}
+.title{font-weight:bold;font-size:14px;margin-bottom:6px}
+.info{font-size:12px;color:#555}
+
+/* BUTTON */
+.btn-buy{
+ margin-top:10px;
+ width:100%;
+ padding:8px;
+ border:none;
+ border-radius:25px;
+ background:linear-gradient(90deg,#666,#444);
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+/* FOOTER */
+.footer{background:#fff;color:#000;text-align:center;padding:20px;border-top:1px solid #ddd}
+.footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.footer button{background:#eee;border:none;padding:10px;border-radius:20px}
+
+/* POPUP */
+.popup{
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ background:#111;
+ color:#fff;
+ padding:10px 14px;
+ border-radius:10px;
+ font-size:13px;
+ opacity:0;
+ transform:translateY(20px);
+ transition:.4s;
+}
+.popup.show{
+ opacity:1;
+ transform:translateY(0)
+}
+
+/* DARK */
+.dark{background:#111;color:#fff}
+.dark .header-box,.dark .card,.dark .footer,.dark .side-menu{background:#222;color:#fff}
+.dark .info{color:#bbb}
+.dark .menu-btn span{background:#fff}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="side-menu" id="sideMenu">
+<div style="text-align:center;margin-bottom:10px">
+<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%">
+<b>MENU</b>
+</div>
+
+<h3>-- MAIN --</h3>
+<div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
+
+<h3>-- SHOP ACC --</h3>
+<div class="menu-item" onclick="goPage('vip.html')">💎 Acc VIP</div>
+<div class="menu-item" onclick="goPage('clone.html')">🧩 Acc Clone</div>
+<div class="menu-item" onclick="goPage('thuong.html')">📦 Acc Thường</div>
+
+<h3>-- CÀY THUÊ --</h3>
+<div class="menu-item" onclick="goPage('ball.html')">⚽ Cày Ball</div>
+<div class="menu-item" onclick="goPage('vang.html')">💰 Cày Vàng</div>
+<div class="menu-item" onclick="goPage('cotruyen.html')">📖 Cày Cốt Truyện</div>
+<div class="menu-item" onclick="goPage('dautruong.html')">🏆 Cày Đấu Trường</div>
+</div>
+
+<div class="header-box">
+<div class="logo-wrap">
+<img src="images/logo.png" class="logo-img">
+<b>THTSC SHOP</b>
+</div>
+<div class="icon-group">
+<button class="icon-btn menu-btn" onclick="toggleMenu(this)">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+
+<div class="section-title">📦 ACC THƯỜNG</div>
+
+<div class="container">
+
+<div class="card">
+<div class="card-img">
+<img src="images/thuong1.png">
+<div class="badge-id">#TH001</div>
+<div class="price-tag">
+<span class="price-new">10K</span>
+<span class="price-old">20K</span>
+</div>
+</div>
+<div class="card-body">
+<div class="title">Acc cơ bản</div>
+<div class="info">Giá rẻ • Dễ chơi • Phù hợp người mới</div>
+<button class="btn-buy">MUA NGAY</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">
+<img src="images/thuong2.png">
+<div class="badge-id">#TH002</div>
+<div class="price-tag">
+<span class="price-new">15K</span>
+<span class="price-old">25K</span>
+</div>
+</div>
+<div class="card-body">
+<div class="title">Acc nâng cấp nhẹ</div>
+<div class="info">Có skin • Rank trung bình</div>
+<button class="btn-buy">MUA NGAY</button>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+<b>HỖ TRỢ KHÁCH HÀNG</b>
+<div>Liên hệ nhanh để được hỗ trợ và tư vấn</div>
+<div class="btn-group">
+<button onclick="goLink('https://zalo.me/0123456789')">📞 Zalo</button>
+<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group Zalo</button>
+<button onclick="goLink('https://facebook.com')">📘 Facebook</button>
+</div>
+</div>
+
+<div id="popup" class="popup">📦 Acc thường giá rẻ đã cập nhật!</div>
+
+<script>
+function goPage(link){window.location.href=link}
+function goLink(link){window.open(link,'_blank')}
+
+function toggleMenu(btn){
+ document.getElementById('sideMenu').classList.toggle('active');
+ document.getElementById('overlay').classList.toggle('active');
+}
+
+function closeMenu(){
+ document.getElementById('sideMenu').classList.remove('active');
+ document.getElementById('overlay').classList.remove('active');
+}
+
+function showPopup(){
+ let p=document.getElementById('popup');
+ p.classList.add('show');
+ setTimeout(()=>{p.classList.remove('show')},3000);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ setTimeout(()=>{document.body.classList.add('show')},50);
+ setTimeout(showPopup,500);
+});
+</script>
+
+</body>
+</html>
