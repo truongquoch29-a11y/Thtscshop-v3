@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acc VIP - THTSC SHOP</title>
+<title>THTSC SHOP</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
-
-/* FADE PAGE */
-body.show{opacity:1}
+body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s}
 
 /* HEADER */
 .header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 5px 15px rgba(0,0,0,.1)}
@@ -19,14 +16,64 @@ body.show{opacity:1}
 
 .icon-group{display:flex;gap:10px}
 .icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;transition:.3s}
-.icon-btn:hover{transform:scale(1.1)}
+.icon-btn:hover{transform:scale(1.15)}
 
-/* MENU */
+/* MENU BUTTON */
 .menu-btn span{display:block;width:18px;height:2px;background:#000;margin:3px 0;transition:.3s}
 .menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .menu-btn.active span:nth-child(2){opacity:0}
 .menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
+/* MARQUEE */
+.marquee{background:#fff;color:#000;font-size:12px;height:22px;display:flex;align-items:center;overflow:hidden;border-top:1px solid #ddd;border-bottom:1px solid #ddd}
+.marquee span{white-space:nowrap;padding-left:100%;animation:run 12s linear infinite}
+@keyframes run{100%{transform:translateX(-100%)}}
+
+/* NOTICE */
+.notice{margin:10px;background:#fff;border-radius:14px;padding:12px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+
+/* TITLE */
+.section-title{text-align:center;font-weight:bold;margin:20px 0 10px;font-size:18px;text-shadow:1px 1px 2px #aaa}
+
+/* ACC */
+.container{padding:10px;display:flex;flex-direction:column;gap:12px}
+.card{background:#fff;border-radius:12px;overflow:hidden;cursor:pointer;transition:.3s;position:relative;text-align:center}
+.card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(0,0,0,.2)}
+.card-img-wrap{width:100%;height:160px;overflow:hidden;border-radius:12px 12px 0 0}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
+.card h3{margin:10px;font-weight:bold;font-size:16px;text-shadow:1px 1px 3px #666}
+
+/* BUTTON ANIMATION */
+@keyframes pulse {0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.card-btn{display:block;margin:8px auto 12px;padding:8px 20px;background:linear-gradient(90deg,#ff7f50,#ff4500);color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:bold;font-size:14px;box-shadow:0 4px 12px rgba(255,69,0,.5);animation:pulse 1.5s infinite}
+.card-btn:hover{transform:scale(1.15);background:linear-gradient(90deg,#ff4500,#ff7f50);box-shadow:0 6px 18px rgba(255,69,0,.7)}
+
+/* SERVICES */
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
+.service-card{background:#fff;border-radius:12px;overflow:hidden;cursor:pointer;transition:.3s;text-align:center;position:relative}
+.service-card:hover{transform:scale(1.05)}
+.service-card .card-img-wrap{height:120px;overflow:hidden;border-radius:12px 12px 0 0}
+.service-card .card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
+.service-card p{margin:10px 0 0;font-weight:bold;font-size:14px;text-shadow:1px 1px 2px #666}
+.service-card .card-btn{display:block;margin:6px auto 10px;padding:6px 16px;background:linear-gradient(90deg,#1e90ff,#00bfff);color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:bold;animation:pulse 1.5s infinite}
+.service-card .card-btn:hover{transform:scale(1.15);background:linear-gradient(90deg,#00bfff,#1e90ff);box-shadow:0 6px 18px rgba(0,191,255,.5)}
+
+/* FOOTER */
+.footer{background:#fff;color:#000;text-align:center;padding:20px;border-top:1px solid #ddd}
+.footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.footer button{background:#eee;border:none;padding:10px;border-radius:20px;cursor:pointer}
+
+/* POPUP */
+.popup{position:fixed;bottom:16px;right:16px;background:#111;color:#fff;padding:8px 12px;border-radius:8px;display:none;font-size:12px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+
+/* DARK */
+.dark{background:#111;color:#fff}
+.dark .header-box,.dark .notice,.dark .card,.dark .service-card{background:#222;color:#fff}
+.dark .marquee{background:#111;color:#fff;border-color:#333}
+.dark .footer{background:#000;color:#fff}
+.dark .menu-btn span{background:#fff}
+
+/* MENU */
 .side-menu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;transition:.3s;z-index:999;padding:15px;overflow:auto}
 .side-menu.active{right:0}
 
@@ -36,31 +83,8 @@ body.show{opacity:1}
 .menu-item{padding:10px;border-radius:8px;cursor:pointer;margin-bottom:5px;font-weight:bold}
 .menu-item:hover{background:#eee}
 
-/* TITLE */
-.section-title{text-align:center;font-weight:bold;margin:20px 0;font-size:20px;text-shadow:1px 1px 2px #aaa}
-
-/* ACC GRID */
-.container{padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#fff;border-radius:12px;overflow:hidden;text-align:center;transition:.3s}
-.card:hover{transform:scale(1.05);box-shadow:0 10px 20px rgba(0,0,0,.2)}
-.card img{width:100%;height:140px;object-fit:cover}
-.card h3{margin:8px;font-size:15px}
-.card p{font-size:13px;margin:0 0 8px}
-
-/* BUTTON */
-@keyframes pulse {0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.card button{margin-bottom:10px;padding:6px 14px;border:none;border-radius:20px;background:linear-gradient(90deg,#ff7f50,#ff4500);color:#fff;cursor:pointer;font-weight:bold;animation:pulse 1.5s infinite}
-
-/* FOOTER (GIỐNG INDEX) */
-.footer{background:#fff;color:#000;text-align:center;padding:20px;border-top:1px solid #ddd}
-.footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
-.footer button{background:#eee;border:none;padding:10px;border-radius:20px;cursor:pointer}
-
-/* DARK */
-.dark{background:#111;color:#fff}
-.dark .header-box,.dark .card,.dark .side-menu,.dark .footer{background:#222;color:#fff}
-.dark .menu-item:hover{background:#333}
-.dark .menu-btn span{background:#fff}
+.dark .side-menu{background:#111;color:#fff}
+.dark .menu-item:hover{background:#222}
 </style>
 </head>
 
@@ -70,12 +94,9 @@ body.show{opacity:1}
 
 <div class="side-menu" id="sideMenu">
 <div style="text-align:center;margin-bottom:10px">
-<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%">
+<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%;object-fit:cover">
 <b>MENU</b>
 </div>
-
-<h3>-- MAIN --</h3>
-<div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
 
 <h3>-- SHOP ACC --</h3>
 <div class="menu-item" onclick="goPage('vip.html')">💎 Acc VIP</div>
@@ -102,21 +123,58 @@ body.show{opacity:1}
 </div>
 </div>
 
-<div class="section-title">💎 ACC VIP</div>
+<div class="marquee"><span>🔥 Shop Acc THTSC • Uy tín • Giá rẻ • Tự động • Hỗ trợ 24/7 🔥</span></div>
 
-<div class="container">
-<div class="card">
-<img src="images/vip.png">
-<h3>Acc VIP #001</h3>
-<p>Full skin - Rank cao</p>
-<button>Mua ngay</button>
+<div class="notice">
+📢 <b>THÔNG BÁO</b><br><br>
+✨ Shop hoạt động 24/7<br>
+💎 Acc VIP / Clone / Thường đầy đủ<br>
+⚡ Giao dịch nhanh<br>
+🛡 Hỗ trợ khi có lỗi<br>
+📩 Hỗ trợ qua Zalo<br><br>
+👉 <span style="color:blue;cursor:pointer;text-decoration:underline" onclick="goLink('https://zalo.me/0123456789')">Ấn vào đây để liên hệ</span>
 </div>
 
-<div class="card">
-<img src="images/vip.png">
-<h3>Acc VIP #002</h3>
-<p>Nhiều vật phẩm</p>
-<button>Mua ngay</button>
+<div class="section-title">-- SHOP ACC --</div>
+<div class="container">
+<div class="card" onclick="goPage('vip.html')">
+  <div class="card-img-wrap"><img src="images/vip.png"></div>
+  <h3>Acc VIP</h3>
+  <button class="card-btn" onclick="goPage('vip.html')">Xem ngay</button>
+</div>
+<div class="card" onclick="goPage('clone.html')">
+  <div class="card-img-wrap"><img src="images/clone.png"></div>
+  <h3>Acc Clone</h3>
+  <button class="card-btn" onclick="goPage('clone.html')">Xem ngay</button>
+</div>
+<div class="card" onclick="goPage('thuong.html')">
+  <div class="card-img-wrap"><img src="images/thuong.png"></div>
+  <h3>Acc Thường</h3>
+  <button class="card-btn" onclick="goPage('thuong.html')">Xem ngay</button>
+</div>
+</div>
+
+<div class="section-title">-- CÀY THUÊ --</div>
+<div class="service-grid">
+<div class="service-card" onclick="goPage('ball.html')">
+  <div class="card-img-wrap"><img src="images/ball.jpg"></div>
+  <p>Cày Ball</p>
+  <button class="card-btn" onclick="goPage('ball.html')">Đặt ngay</button>
+</div>
+<div class="service-card" onclick="goPage('vang.html')">
+  <div class="card-img-wrap"><img src="images/vang.jpg"></div>
+  <p>Cày Vàng</p>
+  <button class="card-btn" onclick="goPage('vang.html')">Đặt ngay</button>
+</div>
+<div class="service-card" onclick="goPage('cotruyen.html')">
+  <div class="card-img-wrap"><img src="images/cottruyen.jpg"></div>
+  <p>Cày Cốt Truyện</p>
+  <button class="card-btn" onclick="goPage('cotruyen.html')">Đặt ngay</button>
+</div>
+<div class="service-card" onclick="goPage('dautruong.html')">
+  <div class="card-img-wrap"><img src="images/dautruong.jpg"></div>
+  <p>Cày Đấu Trường</p>
+  <button class="card-btn" onclick="goPage('dautruong.html')">Đặt ngay</button>
 </div>
 </div>
 
@@ -130,31 +188,19 @@ body.show{opacity:1}
 </div>
 </div>
 
+<div id="popup" class="popup">🔔 Chào mừng bạn đến với THTSC Shop</div>
+
 <script>
 function toggleMode(){
  document.body.classList.toggle('dark');
- localStorage.setItem('mode', document.body.classList.contains('dark')?'dark':'light');
  document.getElementById('modeBtn').textContent = document.body.classList.contains('dark')?'☀️':'🌙';
 }
 
-function loadMode(){
- if(localStorage.getItem('mode')==='dark'){
-  document.body.classList.add('dark');
-  document.getElementById('modeBtn').textContent='☀️';
- }
-}
-
-/* ANIMATION CHUYỂN TRANG */
-function goPage(link){
- document.body.classList.remove('show');
- setTimeout(()=>{window.location.href=link},200);
-}
-
-function goLink(link){window.open(link,'_blank')}
-
 function toggleMenu(btn){
- document.getElementById('sideMenu').classList.toggle('active');
- document.getElementById('overlay').classList.toggle('active');
+ const menu=document.getElementById('sideMenu');
+ const overlay=document.getElementById('overlay');
+ menu.classList.toggle('active');
+ overlay.classList.toggle('active');
  btn.classList.toggle('active');
 }
 
@@ -164,10 +210,16 @@ function closeMenu(){
  document.querySelector('.menu-btn').classList.remove('active');
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
- loadMode();
- setTimeout(()=>{document.body.classList.add('show')},50);
-});
+function goPage(link){window.location.href=link}
+function goLink(link){window.open(link,'_blank')}
+
+function showPopup(){
+ let p=document.getElementById('popup');
+ p.style.display='block';
+ setTimeout(()=>{p.style.display='none'},2000);
+}
+
+document.addEventListener('DOMContentLoaded',showPopup);
 </script>
 
 </body>
