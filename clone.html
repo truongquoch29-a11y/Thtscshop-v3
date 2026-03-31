@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acc Clone - THTSC SHOP</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
+body.show{opacity:1}
+
+/* HEADER + MENU + FOOTER giữ nguyên VIP */
+.header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-img{width:45px;height:45px;border-radius:50%}
+.icon-group{display:flex;gap:10px}
+.icon-btn{background:#eee;border:none;border-radius:50%;width:36px;height:36px}
+.menu-btn span{display:block;width:18px;height:2px;background:#000;margin:3px 0}
+
+.side-menu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;transition:.3s;z-index:999;padding:15px}
+.side-menu.active{right:0}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);display:none}
+.overlay.active{display:block}
+
+.menu-item{padding:10px;border-radius:8px;margin-bottom:5px;font-weight:bold}
+.menu-item:hover{background:#eee}
+
+/* NOTICE */
+.notice{
+ margin:10px;
+ background:#fff;
+ border-radius:12px;
+ padding:12px;
+ box-shadow:0 5px 15px rgba(0,0,0,.1);
+ font-size:13px;
+ line-height:1.6
+}
+
+/* GRID */
+.container{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* CARD */
+.card{background:#fff;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.card-img{height:150px;position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover}
+
+.badge-id{
+ position:absolute;top:8px;left:8px;
+ background:#1e90ff;color:#fff;
+ padding:4px 10px;border-radius:20px;font-size:12px
+}
+
+.stock{
+ position:absolute;
+ top:8px;
+ right:8px;
+ background:#000;
+ color:#fff;
+ padding:3px 8px;
+ font-size:11px;
+ border-radius:6px
+}
+
+.price-tag{
+ position:absolute;bottom:8px;right:8px;
+ background:rgba(0,0,0,.7);
+ padding:6px 10px;border-radius:10px
+}
+.price-new{color:#00ffae;font-weight:bold}
+.price-old{color:#ccc;text-decoration:line-through;font-size:11px}
+
+.card-body{padding:10px;font-size:13px}
+.btn-buy{margin-top:8px;width:100%;padding:8px;border:none;border-radius:20px;background:#1e90ff;color:#fff}
+
+/* FOOTER */
+.footer{background:#fff;text-align:center;padding:20px;border-top:1px solid #ddd}
+.footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.footer button{background:#eee;border:none;padding:10px;border-radius:20px}
+</style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="side-menu" id="sideMenu">
+<h3>-- MAIN --</h3>
+<div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
+
+<h3>-- SHOP ACC --</h3>
+<div class="menu-item" onclick="goPage('vip.html')">💎 Acc VIP</div>
+<div class="menu-item" onclick="goPage('clone.html')">🧩 Acc Clone</div>
+<div class="menu-item" onclick="goPage('thuong.html')">📦 Acc Thường</div>
+
+<h3>-- CÀY THUÊ --</h3>
+<div class="menu-item" onclick="goPage('ball.html')">⚽ Cày Ball</div>
+<div class="menu-item" onclick="goPage('vang.html')">💰 Cày Vàng</div>
+<div class="menu-item" onclick="goPage('cotruyen.html')">📖 Cày Cốt Truyện</div>
+<div class="menu-item" onclick="goPage('dautruong.html')">🏆 Cày Đấu Trường</div>
+</div>
+
+<div class="header-box">
+<div class="logo-wrap">
+<img src="images/logo.png" class="logo-img">
+<b>THTSC SHOP</b>
+</div>
+</div>
+
+<div class="notice">
+📢 <b>THÔNG TIN ACC CLONE</b><br><br>
+🔹 Cần acc Google chưa vào game để liên kết<br>
+🔹 Acc clone chia theo từng mức giá / độ mạnh<br>
+🔹 Giao acc nhanh sau khi thanh toán<br>
+🔹 Hỗ trợ nếu lỗi trong quá trình nhận acc
+</div>
+
+<div class="container">
+
+<div class="card">
+<div class="card-img">
+<img src="images/clone1.png">
+<div class="badge-id">#CL001</div>
+<div class="stock">Còn: 12</div>
+<div class="price-tag">
+<span class="price-new">30K</span>
+<span class="price-old">50K</span>
+</div>
+</div>
+<div class="card-body">
+Clone cơ bản • Dễ liên kết
+<button class="btn-buy">MUA NGAY</button>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+<b>HỖ TRỢ KHÁCH HÀNG</b>
+<div class="btn-group">
+<button onclick="goLink('https://zalo.me/0123456789')">📞 Zalo</button>
+<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group</button>
+</div>
+</div>
+
+<script>
+function goPage(l){window.location.href=l}
+function goLink(l){window.open(l)}
+document.addEventListener('DOMContentLoaded',()=>{document.body.classList.add('show')})
+</script>
+
+</body>
+</html>
