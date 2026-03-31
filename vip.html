@@ -175,7 +175,7 @@ body.show{opacity:1}
 <div class="card-body">
 <div class="title">Nhiều S+ + full chỉ số</div>
 <div class="info">Nhiều skin • Nhiều đồ</div>
-<button class="btn-buy" onclick="buyNow('VIP709','500K')">MUA NGAY</button>
+<button class="btn-buy" onclick="buyNow('VIP709','500K','650K')">MUA NGAY</button>
 </div>
 </div>
 
@@ -191,7 +191,7 @@ body.show{opacity:1}
 <div class="card-body">
 <div class="title">Acc VIP Hiếm</div>
 <div class="info">Rank top • Skin hiếm • Full vật phẩm</div>
-<button class="btn-buy" onclick="buyNow('VIP002','150K')">MUA NGAY</button>
+<button class="btn-buy" onclick="buyNow('VIP002','150K','180K')">MUA NGAY</button>
 </div>
 </div>
 
@@ -207,4 +207,62 @@ body.show{opacity:1}
 </div>
 </div>
 
-<div id="popup" class="popup
+<div id="popup" class="popup">🔥 Acc VIP mới đã lên kệ!</div>
+
+<script>
+function toggleMode(){
+ document.body.classList.toggle('dark');
+ localStorage.setItem('mode', document.body.classList.contains('dark')?'dark':'light');
+ document.getElementById('modeBtn').textContent = document.body.classList.contains('dark')?'☀️':'🌙';
+}
+
+function loadMode(){
+ if(localStorage.getItem('mode')==='dark'){
+  document.body.classList.add('dark');
+  document.getElementById('modeBtn').textContent='☀️';
+ }
+}
+
+function goPage(link){
+ document.body.classList.remove('show');
+ setTimeout(()=>{window.location.href=link},200);
+}
+
+function goLink(link){window.open(link,'_blank')}
+
+function toggleMenu(btn){
+ document.getElementById('sideMenu').classList.toggle('active');
+ document.getElementById('overlay').classList.toggle('active');
+}
+
+function closeMenu(){
+ document.getElementById('sideMenu').classList.remove('active');
+ document.getElementById('overlay').classList.remove('active');
+}
+
+function showPopup(){
+ let p=document.getElementById('popup');
+ p.classList.add('show');
+ setTimeout(()=>{p.classList.remove('show')},3000);
+}
+
+/* ĐÃ SỬA ĐÚNG YÊU CẦU */
+function buyNow(id, priceNew, priceOld){
+ localStorage.setItem('price_new', priceNew);
+ localStorage.setItem('price_old', priceOld);
+
+ document.body.classList.remove('show');
+ setTimeout(()=>{
+  window.location.href = "vip/" + id + ".html";
+ },200);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ loadMode();
+ setTimeout(()=>{document.body.classList.add('show')},50);
+ setTimeout(showPopup,500);
+});
+</script>
+
+</body>
+</html>
