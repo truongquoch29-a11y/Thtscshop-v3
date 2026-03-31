@@ -175,7 +175,7 @@ body.show{opacity:1}
 <div class="card-body">
 <div class="title">Full Skin + Rank Cao</div>
 <div class="info">Rank cao • Nhiều skin • Full đồ</div>
-<button class="btn-buy">MUA NGAY</button>
+<button class="btn-buy" onclick="buyNow('VIP001','120K','150K')">MUA NGAY</button>
 </div>
 </div>
 
@@ -191,7 +191,7 @@ body.show{opacity:1}
 <div class="card-body">
 <div class="title">Acc VIP Hiếm</div>
 <div class="info">Rank top • Skin hiếm • Full vật phẩm</div>
-<button class="btn-buy">MUA NGAY</button>
+<button class="btn-buy" onclick="buyNow('VIP002','150K','180K')">MUA NGAY</button>
 </div>
 </div>
 
@@ -244,6 +244,18 @@ function showPopup(){
  let p=document.getElementById('popup');
  p.classList.add('show');
  setTimeout(()=>{p.classList.remove('show')},3000);
+}
+
+/* PHẦN SỬA */
+function buyNow(id, priceNew, priceOld){
+ localStorage.setItem('acc_id', id);
+ localStorage.setItem('price_new', priceNew);
+ localStorage.setItem('price_old', priceOld);
+
+ document.body.classList.remove('show');
+ setTimeout(()=>{
+  window.location.href = "chitiet.html";
+ },200);
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
