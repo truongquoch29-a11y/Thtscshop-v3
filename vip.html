@@ -64,8 +64,10 @@ body.show{opacity:1}
  background:rgba(0,0,0,.7);
  padding:6px 10px;
  border-radius:10px;
+ backdrop-filter:blur(5px)
 }
 .price-new{color:#00ffae;font-weight:bold;font-size:14px}
+.price-old{color:#ccc;font-size:11px;text-decoration:line-through}
 
 /* CONTENT */
 .card-body{padding:10px}
@@ -83,19 +85,77 @@ body.show{opacity:1}
  color:#fff;
  font-weight:bold;
  cursor:pointer;
+ box-shadow:0 4px 12px rgba(255,69,0,.5)
 }
 
 /* FOOTER */
 .footer{background:#fff;color:#000;text-align:center;padding:20px;border-top:1px solid #ddd}
+.footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.footer button{background:#eee;border:none;padding:10px;border-radius:20px}
+
+/* POPUP */
+.popup{
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ background:#111;
+ color:#fff;
+ padding:10px 14px;
+ border-radius:10px;
+ font-size:13px;
+ opacity:0;
+ transform:translateY(20px);
+ transition:.4s;
+ box-shadow:0 6px 18px rgba(0,0,0,.4)
+}
+.popup.show{
+ opacity:1;
+ transform:translateY(0)
+}
+
+/* DARK */
+.dark{background:#111;color:#fff}
+.dark .header-box,.dark .card,.dark .footer,.dark .side-menu{background:#222;color:#fff}
+.dark .info{color:#bbb}
+.dark .menu-btn span{background:#fff}
 </style>
 </head>
 
 <body>
 
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="side-menu" id="sideMenu">
+<div style="text-align:center;margin-bottom:10px">
+<img src="images/logo.png" style="width:70px;height:70px;border-radius:50%">
+<b>MENU</b>
+</div>
+
+<h3>-- MAIN --</h3>
+<div class="menu-item" onclick="goPage('index.html')">🏠 Trang chủ</div>
+
+<h3>-- SHOP ACC --</h3>
+<div class="menu-item" onclick="goPage('vip.html')">💎 Acc VIP</div>
+<div class="menu-item" onclick="goPage('clone.html')">🧩 Acc Clone</div>
+<div class="menu-item" onclick="goPage('thuong.html')">📦 Acc Thường</div>
+
+<h3>-- CÀY THUÊ --</h3>
+<div class="menu-item" onclick="goPage('ball.html')">⚽ Cày Ball</div>
+<div class="menu-item" onclick="goPage('vang.html')">💰 Cày Vàng</div>
+<div class="menu-item" onclick="goPage('cotruyen.html')">📖 Cày Cốt Truyện</div>
+<div class="menu-item" onclick="goPage('dautruong.html')">🏆 Cày Đấu Trường</div>
+</div>
+
 <div class="header-box">
 <div class="logo-wrap">
 <img src="images/logo.png" class="logo-img">
 <b>THTSC SHOP</b>
+</div>
+<div class="icon-group">
+<button class="icon-btn" onclick="toggleMode()" id="modeBtn">🌙</button>
+<button class="icon-btn menu-btn" onclick="toggleMenu(this)">
+<span></span><span></span><span></span>
+</button>
 </div>
 </div>
 
@@ -109,11 +169,12 @@ body.show{opacity:1}
 <div class="badge-id">#VIP709</div>
 <div class="price-tag">
 <span class="price-new">500K</span>
+<span class="price-old">650K</span>
 </div>
 </div>
 <div class="card-body">
-<div class="title">Nhiều S+ • Nhiều S</div>
- <div class="title">Nhiều Skin + Rank Cao</div>
+<div class="title">Nhiều S+ + full chỉ số</div>
+<div class="info">Nhiều skin • Nhiều đồ</div>
 <button class="btn-buy" onclick="buyNow('VIP709','500K')">MUA NGAY</button>
 </div>
 </div>
@@ -121,29 +182,29 @@ body.show{opacity:1}
 <div class="card">
 <div class="card-img">
 <img src="images/vip2.png">
-<div class="badge-id">#VIP708</div>
+<div class="badge-id">#VIP002</div>
 <div class="price-tag">
-<span class="price-new">500K</span>
+<span class="price-new">150K</span>
+<span class="price-old">180K</span>
 </div>
 </div>
 <div class="card-body">
 <div class="title">Acc VIP Hiếm</div>
+<div class="info">Rank top • Skin hiếm • Full vật phẩm</div>
 <button class="btn-buy" onclick="buyNow('VIP002','150K')">MUA NGAY</button>
 </div>
 </div>
 
 </div>
 
-<script>
-function buyNow(id, priceNew){
- localStorage.setItem('price_new', priceNew);
- window.location.href = "vip/" + id + ".html";
-}
+<div class="footer">
+<b>HỖ TRỢ KHÁCH HÀNG</b>
+<div>Liên hệ nhanh để được hỗ trợ và tư vấn</div>
+<div class="btn-group">
+<button onclick="goLink('https://zalo.me/0123456789')">📞 Zalo</button>
+<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group Zalo</button>
+<button onclick="goLink('https://facebook.com')">📘 Facebook</button>
+</div>
+</div>
 
-document.addEventListener('DOMContentLoaded',()=>{
- setTimeout(()=>{document.body.classList.add('show')},50);
-});
-</script>
-
-</body>
-</html>
+<div id="popup" class="popup
