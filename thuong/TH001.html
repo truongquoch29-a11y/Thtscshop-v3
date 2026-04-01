@@ -28,7 +28,6 @@ body.show{opacity:1}
 /* TITLE */
 .acc-title{
 margin:10px;
-padding:0;
 text-align:center;
 font-size:22px;
 font-weight:bold;
@@ -169,12 +168,6 @@ font-weight:bold
 <div class="menu-item" onclick="goPage('../vip.html')">💎 Acc VIP</div>
 <div class="menu-item" onclick="goPage('../clone.html')">🧩 Acc Clone</div>
 <div class="menu-item" onclick="goPage('../thuong.html')">📦 Acc Thường</div>
-
-<h3>-- CÀY THUÊ --</h3>
-<div class="menu-item" onclick="goPage('../ball.html')">⚽ Cày Ball</div>
-<div class="menu-item" onclick="goPage('../vang.html')">💰 Cày Vàng</div>
-<div class="menu-item" onclick="goPage('../cotruyen.html')">📖 Cày Cốt Truyện</div>
-<div class="menu-item" onclick="goPage('../dautruong.html')">🏆 Cày Đấu Trường</div>
 </div>
 
 <div class="header-box">
@@ -246,21 +239,36 @@ function closeMenu(){
  document.getElementById('overlay').classList.remove('active');
 }
 
+/* LẤY ID (CHỈ SỐ) */
 let id=location.pathname.split('/').pop().replace('.html','');
 document.getElementById('accCode').textContent="Mã acc: "+id;
 
-/* FORMAT PRICE xx.000 VND */
+/* FORMAT GIÁ */
 let price=localStorage.getItem('price_new') || "0";
 price=price.toString().replace(/[^0-9]/g,'');
 if(price.length<=3){ price=price+"000"; }
 price=price.replace(/\B(?=(\d{3})+(?!\d))/g,".");
 document.getElementById('priceNew').textContent=price+" VND";
 
+/* LOAD ẢNH: images/1m1.jpg, 1m2.png,... */
 let box=document.getElementById('imgs');
+
 for(let i=1;i<=5;i++){
+ let base="images/"+id+"m"+i;
+ let formats=[".jpg",".png",".jpeg"];
+
  let img=document.createElement('img');
- img.src="thuong/images/"+id.replace("TH","")+"m"+i+".jpg";
- img.onerror=function(){this.style.display='none'};
+ let index=0;
+
+ function tryLoad(){
+  if(index>=formats.length){ img.style.display='none'; return; }
+  img.src=base+formats[index];
+  index++;
+ }
+
+ img.onerror=tryLoad;
+ tryLoad();
+
  box.appendChild(img);
 }
 
@@ -271,7 +279,9 @@ function openPopup(){
 }
 function closePopup(){ document.getElementById('popup').classList.remove('show'); }
 
-document.addEventListener('DOMContentLoaded',()=>{ setTimeout(()=>document.body.classList.add('show'),50); });
+document.addEventListener('DOMContentLoaded',()=>{
+ setTimeout(()=>document.body.classList.add('show'),50);
+});
 </script>
 
 </body>
