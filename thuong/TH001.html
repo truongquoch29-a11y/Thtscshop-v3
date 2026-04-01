@@ -26,128 +26,40 @@ body.show{opacity:1}
 .menu-item:hover{background:#eee}
 
 /* TITLE */
-.acc-title{
-margin:10px;
-text-align:center;
-font-size:22px;
-font-weight:bold;
-letter-spacing:1px;
-text-transform:uppercase;
-}
+.acc-title{margin:10px;text-align:center;font-size:22px;font-weight:bold;text-transform:uppercase}
 
 /* BOX */
 .box{margin:10px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
 
 /* IMAGE */
 .img-list{display:flex;flex-direction:column;gap:12px;margin:10px 0}
-.img-list img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:14px;
-transition:.3s;
-box-shadow:0 5px 15px rgba(0,0,0,.2)
-}
-.img-list img:hover{transform:scale(1.05)}
+.img-list img{width:100%;height:180px;object-fit:cover;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,.2)}
 
 /* INFO */
-.info{
-background:#f9f9f9;
-padding:14px;
-border-radius:12px;
-font-size:14px;
-line-height:1.6;
-margin-top:10px
-}
+.info{background:#f9f9f9;padding:14px;border-radius:12px;font-size:14px;margin-top:10px}
 
-.acc-detail{
-margin-top:12px;
-padding:12px;
-border-radius:12px;
-background:#fff3e0;
-border:1px solid #ffd59e;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:14px;
-font-weight:bold;
-}
+/* ACC */
+.acc-detail{margin-top:12px;padding:12px;border-radius:12px;background:#fff3e0;border:1px solid #ffd59e;display:flex;justify-content:space-between;font-weight:bold}
 
 /* BUTTON */
-.btn-buy{
-margin-top:15px;
-width:100%;
-padding:14px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#00c6ff,#0072ff);
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-font-size:15px;
-animation:glow 1.5s infinite
-}
-@keyframes glow{
-0%{box-shadow:0 0 5px #0072ff}
-50%{box-shadow:0 0 25px #00c6ff}
-100%{box-shadow:0 0 5px #0072ff}
-}
+.btn-buy{margin-top:15px;width:100%;padding:14px;border:none;border-radius:30px;background:linear-gradient(90deg,#00c6ff,#0072ff);color:#fff;font-weight:bold;cursor:pointer;animation:glow 1.5s infinite}
+@keyframes glow{0%{box-shadow:0 0 5px #0072ff}50%{box-shadow:0 0 25px #00c6ff}100%{box-shadow:0 0 5px #0072ff}}
 
 /* FOOTER */
-.footer{background:#fff;color:#000;text-align:center;padding:20px;border-top:1px solid #ddd;margin-top:20px}
-.footer .btn-group{display:flex;justify-content:center;gap:10px;margin-top:10px}
-.footer button{background:#eee;border:none;padding:10px;border-radius:20px;cursor:pointer}
+.footer{background:#fff;text-align:center;padding:20px;margin-top:20px}
 
 /* POPUP */
-.popup{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,.6);
-display:flex;
-justify-content:center;
-align-items:center;
-opacity:0;
-pointer-events:none;
-transition:.3s;
-z-index:9999
-}
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);display:flex;justify-content:center;align-items:center;opacity:0;pointer-events:none}
 .popup.show{opacity:1;pointer-events:auto}
-
-.popup-box{
-background:#fff;
-padding:20px;
-border-radius:14px;
-text-align:center;
-width:85%;
-max-width:320px;
-animation:scale .3s
-}
-@keyframes scale{from{transform:scale(.7)}to{transform:scale(1)}}
-
+.popup-box{background:#fff;padding:20px;border-radius:14px;text-align:center;width:85%;max-width:320px}
 .popup-btns{display:flex;gap:10px;margin-top:10px}
-.popup-btns button{
-flex:1;
-padding:10px;
-border:none;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold
-}
+.popup-btns button{flex:1;padding:10px;border:none;border-radius:20px}
 .btn-ok{background:#00c896;color:#fff}
 .btn-cancel{background:#ccc}
 
 /* DARK */
 .dark{background:#111;color:#fff}
 .dark .header-box,.dark .box,.dark .footer,.dark .side-menu{background:#222;color:#fff}
-.dark .menu-item:hover{background:#333}
-.dark .menu-btn span{background:#fff}
-.dark .popup{background:rgba(0,0,0,.8)}
-.dark .popup-box{background:#222;color:#fff}
-.dark .btn-ok{background:#00c896;color:#000}
-.dark .btn-cancel{background:#555;color:#fff}
-.dark .info{background:#333}
-.dark .acc-detail{background:#333;border-color:#555;color:#fff}
 </style>
 </head>
 
@@ -156,6 +68,7 @@ font-weight:bold
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <div class="side-menu" id="sideMenu">
+
 <div style="text-align:center;margin-bottom:10px">
 <img src="../images/logo.png" style="width:70px;height:70px;border-radius:50%">
 <b>MENU</b>
@@ -168,6 +81,13 @@ font-weight:bold
 <div class="menu-item" onclick="goPage('../vip.html')">💎 Acc VIP</div>
 <div class="menu-item" onclick="goPage('../clone.html')">🧩 Acc Clone</div>
 <div class="menu-item" onclick="goPage('../thuong.html')">📦 Acc Thường</div>
+
+<h3>-- CÀY THUÊ --</h3>
+<div class="menu-item" onclick="goPage('../ball.html')">⚽ Cày Ball</div>
+<div class="menu-item" onclick="goPage('../vang.html')">💰 Cày Vàng</div>
+<div class="menu-item" onclick="goPage('../cotruyen.html')">📖 Cày Cốt Truyện</div>
+<div class="menu-item" onclick="goPage('../dautruong.html')">🏆 Cày Đấu Trường</div>
+
 </div>
 
 <div class="header-box">
@@ -183,7 +103,7 @@ font-weight:bold
 </div>
 </div>
 
-<div class="acc-title">-- CHI TIẾT ACC --</div>
+<div class="acc-title">CHI TIẾT ACC</div>
 
 <div class="box">
 
@@ -191,97 +111,96 @@ font-weight:bold
 
 <div class="info">
 ⚠️ Acc dính xác minh<br>
-🚫 Game không bảo hành<br>
-🎮 Có nhiều vật phẩm giá trị
+🚫 Không bảo hành<br>
+🎮 Có vật phẩm
 </div>
 
 <div class="acc-detail">
-<span id="accCode">Mã acc</span>
-<span id="priceNew">0 VND</span>
+<span id="accCode"></span>
+<span id="priceNew"></span>
 </div>
 
-<button class="btn-buy" onclick="openPopup()">💳 MUA NGAY</button>
+<button class="btn-buy" onclick="openPopup()">MUA NGAY</button>
 </div>
 
 <div class="footer">
-<b>HỖ TRỢ KHÁCH HÀNG</b>
-<div>Liên hệ nhanh để được hỗ trợ</div>
-<div class="btn-group">
-<button onclick="goZalo()">📞 Zalo</button>
-<button onclick="goLink('https://zalo.me/g/xxxx')">👥 Group</button>
-<button onclick="goLink('https://facebook.com')">📘 Facebook</button>
+<b>HỖ TRỢ</b>
+<div>
+<button onclick="goZalo()">Zalo</button>
+<button onclick="goLink('https://facebook.com')">Facebook</button>
 </div>
 </div>
 
 <div class="popup" id="popup">
 <div class="popup-box">
-<h3>📢 THÔNG BÁO</h3>
 <p id="popupText"></p>
 <div class="popup-btns">
-<button class="btn-ok" onclick="goZalo()">XÁC NHẬN</button>
-<button class="btn-cancel" onclick="closePopup()">HỦY</button>
+<button class="btn-ok" onclick="goZalo()">OK</button>
+<button class="btn-cancel" onclick="closePopup()">Hủy</button>
 </div>
 </div>
 </div>
 
 <script>
-function toggleMode(){ document.body.classList.toggle('dark'); }
-function goPage(link){window.location.href=link}
-function goLink(link){window.open(link,'_blank')}
-function goZalo(){window.open("https://zalo.me/0123456789","_blank")}
+function toggleMode(){document.body.classList.toggle('dark')}
+function goPage(link){location.href=link}
+function goLink(link){window.open(link)}
+function goZalo(){window.open("https://zalo.me/0123456789")}
 
 function toggleMenu(){
- document.getElementById('sideMenu').classList.toggle('active');
- document.getElementById('overlay').classList.toggle('active');
+sideMenu.classList.toggle('active')
+overlay.classList.toggle('active')
 }
 function closeMenu(){
- document.getElementById('sideMenu').classList.remove('active');
- document.getElementById('overlay').classList.remove('active');
+sideMenu.classList.remove('active')
+overlay.classList.remove('active')
 }
 
-/* LẤY ID (CHỈ SỐ) */
-let id=location.pathname.split('/').pop().replace('.html','');
-document.getElementById('accCode').textContent="Mã acc: "+id;
+/* ID */
+let id=location.pathname.split('/').pop().replace('.html','')
+accCode.textContent="Mã acc: "+id
 
-/* FORMAT GIÁ */
-let price=localStorage.getItem('price_new') || "0";
-price=price.toString().replace(/[^0-9]/g,'');
-if(price.length<=3){ price=price+"000"; }
-price=price.replace(/\B(?=(\d{3})+(?!\d))/g,".");
-document.getElementById('priceNew').textContent=price+" VND";
+/* PRICE */
+let price=localStorage.getItem('price_new')||"0"
+price=price.replace(/\D/g,'')
+if(price.length<=3) price+="000"
+price=price.replace(/\B(?=(\d{3})+(?!\d))/g,".")
+priceNew.textContent=price+" VND"
 
-/* LOAD ẢNH: images/1m1.jpg, 1m2.png,... */
-let box=document.getElementById('imgs');
+/* LOAD ẢNH (tự dò jpg/png/jpeg) */
+let box=document.getElementById('imgs')
 
 for(let i=1;i<=5;i++){
- let base="images/"+id+"m"+i;
- let formats=[".jpg",".png",".jpeg"];
 
- let img=document.createElement('img');
- let index=0;
+ let base="../thuong/images/"+id+"m"+i
 
- function tryLoad(){
-  if(index>=formats.length){ img.style.display='none'; return; }
-  img.src=base+formats[index];
-  index++;
+ let formats=[".jpg",".png",".jpeg"]
+
+ let img=document.createElement('img')
+ let index=0
+
+ function load(){
+  if(index>=formats.length){img.style.display="none";return}
+  img.src=base+formats[index]
+  index++
  }
 
- img.onerror=tryLoad;
- tryLoad();
+ img.onerror=load
+ load()
 
- box.appendChild(img);
+ box.appendChild(img)
 }
 
+/* POPUP */
 function openPopup(){
- document.getElementById('popupText').innerHTML =
- "Bạn cần liên hệ admin để mua mã acc: <b>"+id+"</b><br><br>Cảm ơn đã ủng hộ shop<br>Chúc bạn trải nghiệm vui vẻ";
- document.getElementById('popup').classList.add('show');
+popupText.innerHTML="Liên hệ mua acc: <b>"+id+"</b>"
+popup.classList.add('show')
 }
-function closePopup(){ document.getElementById('popup').classList.remove('show'); }
+function closePopup(){popup.classList.remove('show')}
 
 document.addEventListener('DOMContentLoaded',()=>{
- setTimeout(()=>document.body.classList.add('show'),50);
-});
+setTimeout(()=>document.body.classList.add('show'),50)
+})
 </script>
 
 </body>
