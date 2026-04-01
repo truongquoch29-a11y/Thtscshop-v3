@@ -28,30 +28,16 @@ body.show{opacity:1}
 /* TITLE */
 .acc-title{
 margin:10px;
-padding:18px;
-border-radius:16px;
-background:linear-gradient(45deg,#ff4500,#ff7f50);
-color:#fff;
+padding:0;
 text-align:center;
 font-size:22px;
 font-weight:bold;
-box-shadow:0 8px 25px rgba(0,0,0,.3);
 letter-spacing:1px;
-text-transform:uppercase
+text-transform:uppercase;
 }
 
 /* BOX */
 .box{margin:10px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
-
-/* PRICE */
-.price{
-font-size:32px;
-color:#00c896;
-font-weight:bold;
-text-align:center;
-margin-bottom:15px;
-text-shadow:0 0 12px rgba(0,200,150,.4)
-}
 
 /* IMAGE */
 .img-list{display:flex;flex-direction:column;gap:12px;margin:10px 0}
@@ -75,15 +61,17 @@ line-height:1.6;
 margin-top:10px
 }
 
-.acc-id{
-margin-top:10px;
-padding:10px;
-border-radius:10px;
+.acc-detail{
+margin-top:12px;
+padding:12px;
+border-radius:12px;
 background:#fff3e0;
-font-size:13px;
-text-align:center;
+border:1px solid #ffd59e;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
 font-weight:bold;
-border:1px solid #ffd59e
 }
 
 /* BUTTON */
@@ -160,7 +148,7 @@ font-weight:bold
 .dark .btn-ok{background:#00c896;color:#000}
 .dark .btn-cancel{background:#555;color:#fff}
 .dark .info{background:#333}
-.dark .acc-id{background:#333;border-color:#555}
+.dark .acc-detail{background:#333;border-color:#555;color:#fff}
 </style>
 </head>
 
@@ -206,8 +194,6 @@ font-weight:bold
 
 <div class="box">
 
-<div class="price" id="priceNew"></div>
-
 <div class="img-list" id="imgs"></div>
 
 <div class="info">
@@ -216,7 +202,10 @@ font-weight:bold
 🎮 Có nhiều vật phẩm giá trị
 </div>
 
-<div class="acc-id">Mã acc: <span id="accCode"></span></div>
+<div class="acc-detail">
+<span id="accCode">Mã acc</span>
+<span id="priceNew">0 VND</span>
+</div>
 
 <button class="btn-buy" onclick="openPopup()">💳 MUA NGAY</button>
 </div>
@@ -243,10 +232,7 @@ font-weight:bold
 </div>
 
 <script>
-function toggleMode(){
- document.body.classList.toggle('dark');
-}
-
+function toggleMode(){ document.body.classList.toggle('dark'); }
 function goPage(link){window.location.href=link}
 function goLink(link){window.open(link,'_blank')}
 function goZalo(){window.open("https://zalo.me/0123456789","_blank")}
@@ -255,22 +241,18 @@ function toggleMenu(){
  document.getElementById('sideMenu').classList.toggle('active');
  document.getElementById('overlay').classList.toggle('active');
 }
-
 function closeMenu(){
  document.getElementById('sideMenu').classList.remove('active');
  document.getElementById('overlay').classList.remove('active');
 }
 
 let id=location.pathname.split('/').pop().replace('.html','');
-
-document.getElementById('accCode').textContent=id;
+document.getElementById('accCode').textContent="Mã acc: "+id;
 
 /* FORMAT PRICE xx.000 VND */
 let price=localStorage.getItem('price_new') || "0";
 price=price.toString().replace(/[^0-9]/g,'');
-if(price.length<=3){
- price=price+"000";
-}
+if(price.length<=3){ price=price+"000"; }
 price=price.replace(/\B(?=(\d{3})+(?!\d))/g,".");
 document.getElementById('priceNew').textContent=price+" VND";
 
@@ -287,14 +269,9 @@ function openPopup(){
  "Bạn cần liên hệ admin để mua mã acc: <b>"+id+"</b><br><br>Cảm ơn đã ủng hộ shop<br>Chúc bạn trải nghiệm vui vẻ";
  document.getElementById('popup').classList.add('show');
 }
+function closePopup(){ document.getElementById('popup').classList.remove('show'); }
 
-function closePopup(){
- document.getElementById('popup').classList.remove('show');
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
- setTimeout(()=>document.body.classList.add('show'),50);
-});
+document.addEventListener('DOMContentLoaded',()=>{ setTimeout(()=>document.body.classList.add('show'),50); });
 </script>
 
 </body>
