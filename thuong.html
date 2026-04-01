@@ -43,7 +43,7 @@ body.show{opacity:1}
 .badge-id{position:absolute;top:8px;left:8px;background:#666;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px}
 
 /* PRICE */
-.price-tag{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:6px 10px;border-radius:10px}
+.price-box{margin-top:6px;display:flex;justify-content:flex-end;gap:6px}
 .price-new{color:#00ffae;font-weight:bold}
 .price-old{color:#ccc;text-decoration:line-through;font-size:11px}
 
@@ -112,7 +112,7 @@ transition:.2s;
 </div>
 <div class="icon-group">
 <button class="icon-btn" onclick="toggleMode()" id="modeBtn">🌙</button>
-<button class="icon-btn menu-btn" onclick="toggleMenu(this)">
+<button class="icon-btn menu-btn" onclick="toggleMenu()">
 <span></span><span></span><span></span>
 </button>
 </div>
@@ -126,14 +126,15 @@ transition:.2s;
 <div class="card-img">
 <img src="images/thuong1.png">
 <div class="badge-id">#TH001</div>
-<div class="price-tag">
-<span class="price-new">10K</span>
-<span class="price-old">20K</span>
-</div>
 </div>
 <div class="card-body">
-Acc cơ bản • Giá rẻ
-<button class="btn-buy" onclick="buyNow('TH001','10K','20K')">MUA NGAY</button>
+<div class="title">Acc cơ bản</div>
+<div class="info">Dễ sử dụng</div>
+<div class="price-box">
+<span class="price-new">10.000đ</span>
+<span class="price-old">20.000đ</span>
+</div>
+<button class="btn-buy" onclick="buyNow('TH001','10.000','20.000')">MUA NGAY</button>
 </div>
 </div>
 
@@ -141,14 +142,15 @@ Acc cơ bản • Giá rẻ
 <div class="card-img">
 <img src="images/thuong2.png">
 <div class="badge-id">#TH002</div>
-<div class="price-tag">
-<span class="price-new">15K</span>
-<span class="price-old">25K</span>
-</div>
 </div>
 <div class="card-body">
-Acc nâng cấp nhẹ
-<button class="btn-buy" onclick="buyNow('TH002','15K','25K')">MUA NGAY</button>
+<div class="title">Acc nâng cấp nhẹ</div>
+<div class="info">Tài nguyên khá</div>
+<div class="price-box">
+<span class="price-new">15.000đ</span>
+<span class="price-old">25.000đ</span>
+</div>
+<button class="btn-buy" onclick="buyNow('TH002','15.000','25.000')">MUA NGAY</button>
 </div>
 </div>
 
@@ -195,12 +197,10 @@ function closeMenu(){
  document.getElementById('overlay').classList.remove('active');
 }
 
-/* PHẦN SỬA */
 function buyNow(id, priceNew, priceOld){
  localStorage.setItem('acc_id', id);
  localStorage.setItem('price_new', priceNew);
  localStorage.setItem('price_old', priceOld);
-
  document.body.style.opacity='0';
  setTimeout(()=>{
   window.location.href = "chitietthuong.html";
