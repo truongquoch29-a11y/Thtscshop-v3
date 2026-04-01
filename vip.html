@@ -40,34 +40,37 @@ body.show{opacity:1}
 .card-img{position:relative;height:150px;overflow:hidden}
 .card-img img{width:100%;height:100%;object-fit:cover}
 
-/* BADGE */
+/* BADGE (mã acc) */
 .badge-id{
  position:absolute;
  top:8px;
  left:8px;
- background:linear-gradient(45deg,#ff4500,#ff7f50);
+ background:#3b82f6; /* màu xanh đẹp hơn */
  color:#fff;
- padding:4px 10px;
- font-size:12px;
- border-radius:20px;
+ padding:6px 12px;
+ font-size:13px;
  font-weight:bold;
+ border-radius:0; /* bỏ bo góc */
+ text-transform:uppercase;
 }
 
-/* PRICE BOX */
+/* PRICE */
 .price-box{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:#ffefd5; /* màu nổi bật */
   padding:6px 10px;
-  border-radius:12px;
   margin-bottom:10px;
   font-weight:bold;
-  font-size:13px;
+  font-size:14px;
 }
-.acc-id{color:#ff4500}
-.price-new{color:#00c851}
-.price-old{color:#888;text-decoration:line-through}
+.price-new{
+  color:#00c851;
+}
+.price-old{
+  color:#888;
+  text-decoration:line-through;
+}
 
 /* CONTENT */
 .card-body{padding:10px}
@@ -172,7 +175,6 @@ body.show{opacity:1}
     <div class="title">Nhiều S+ full chỉ số</div>
     <div class="info">Nhiều skin • Nhiều đồ</div>
     <div class="price-box">
-      <span class="acc-id">#VIP709</span>
       <span class="price-new">500.000đ</span>
       <span class="price-old">650.000đ</span>
     </div>
@@ -189,7 +191,6 @@ body.show{opacity:1}
     <div class="title">Acc VIP Hiếm</div>
     <div class="info">Rank top • Skin hiếm • Full vật phẩm</div>
     <div class="price-box">
-      <span class="acc-id">#VIP002</span>
       <span class="price-new">150.000đ</span>
       <span class="price-old">180.000đ</span>
     </div>
