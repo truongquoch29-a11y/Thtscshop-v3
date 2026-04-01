@@ -28,15 +28,16 @@ body.show{opacity:1}
 /* TITLE */
 .acc-title{
 margin:10px;
-padding:20px;
+padding:18px;
 border-radius:16px;
 background:linear-gradient(45deg,#ff4500,#ff7f50);
 color:#fff;
 text-align:center;
-font-size:24px;
+font-size:22px;
 font-weight:bold;
 box-shadow:0 8px 25px rgba(0,0,0,.3);
-letter-spacing:1px
+letter-spacing:1px;
+text-transform:uppercase
 }
 
 /* BOX */
@@ -44,12 +45,12 @@ letter-spacing:1px
 
 /* PRICE */
 .price{
-font-size:26px;
+font-size:32px;
 color:#00c896;
 font-weight:bold;
 text-align:center;
-margin-bottom:10px;
-text-shadow:0 0 10px rgba(0,200,150,.4)
+margin-bottom:15px;
+text-shadow:0 0 12px rgba(0,200,150,.4)
 }
 
 /* IMAGE */
@@ -67,11 +68,22 @@ box-shadow:0 5px 15px rgba(0,0,0,.2)
 /* INFO */
 .info{
 background:#f9f9f9;
-padding:12px;
+padding:14px;
 border-radius:12px;
 font-size:14px;
 line-height:1.6;
 margin-top:10px
+}
+
+.acc-id{
+margin-top:10px;
+padding:10px;
+border-radius:10px;
+background:#fff3e0;
+font-size:13px;
+text-align:center;
+font-weight:bold;
+border:1px solid #ffd59e
 }
 
 /* BUTTON */
@@ -148,6 +160,7 @@ font-weight:bold
 .dark .btn-ok{background:#00c896;color:#000}
 .dark .btn-cancel{background:#555;color:#fff}
 .dark .info{background:#333}
+.dark .acc-id{background:#333;border-color:#555}
 </style>
 </head>
 
@@ -189,9 +202,10 @@ font-weight:bold
 </div>
 </div>
 
-<div class="acc-title" id="accTitle"></div>
+<div class="acc-title">-- CHI TIẾT ACC --</div>
 
 <div class="box">
+
 <div class="price" id="priceNew"></div>
 
 <div class="img-list" id="imgs"></div>
@@ -199,9 +213,10 @@ font-weight:bold
 <div class="info">
 ⚠️ Acc dính xác minh<br>
 🚫 Game không bảo hành<br>
-🆔 Mã acc: <b id="accCode"></b><br>
 🎮 Có nhiều vật phẩm giá trị
 </div>
+
+<div class="acc-id">Mã acc: <span id="accCode"></span></div>
 
 <button class="btn-buy" onclick="openPopup()">💳 MUA NGAY</button>
 </div>
@@ -248,9 +263,16 @@ function closeMenu(){
 
 let id=location.pathname.split('/').pop().replace('.html','');
 
-document.getElementById('accTitle').innerHTML="🔥 ACC "+id;
 document.getElementById('accCode').textContent=id;
-document.getElementById('priceNew').textContent=localStorage.getItem('price_new');
+
+/* FORMAT PRICE xx.000 VND */
+let price=localStorage.getItem('price_new') || "0";
+price=price.toString().replace(/[^0-9]/g,'');
+if(price.length<=3){
+ price=price+"000";
+}
+price=price.replace(/\B(?=(\d{3})+(?!\d))/g,".");
+document.getElementById('priceNew').textContent=price+" VND";
 
 let box=document.getElementById('imgs');
 for(let i=1;i<=5;i++){
