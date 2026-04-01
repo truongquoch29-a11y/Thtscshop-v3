@@ -47,14 +47,57 @@ body.show{opacity:1}
 .card-img{height:150px;position:relative}
 .card-img img{width:100%;height:100%;object-fit:cover}
 
-.badge-id{position:absolute;top:8px;left:8px;background:#1e90ff;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px}
-.stock{position:absolute;top:8px;right:8px;background:#000;color:#fff;padding:3px 8px;font-size:11px;border-radius:6px}
+/* BADGE MÃ ACC */
+.badge-id{
+ position:absolute;
+ top:8px;
+ left:8px;
+ background:#1e3a8a; /* màu xanh đẹp, khác cam */
+ color:#fff;
+ padding:6px 12px;
+ font-size:13px;
+ font-weight:bold;
+ border-radius:6px;
+ width:60px;  /* cố định chiều rộng */
+ height:24px; /* cố định chiều cao */
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-transform:uppercase;
+}
 
-.price-tag{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:6px 10px;border-radius:10px}
-.price-new{color:#00ffae;font-weight:bold}
-.price-old{color:#ccc;text-decoration:line-through;font-size:11px}
+/* SỐ ACC CÒN LẠI */
+.stock{
+ position:absolute;
+ top:40px; /* cách badge-id 1 chút */
+ left:8px;
+ background:#ff9800;
+ color:#fff;
+ padding:3px 8px;
+ font-size:11px;
+ border-radius:6px;
+}
 
-.card-body{padding:10px;font-size:13px}
+/* PRICE */
+.price-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:6px 10px;
+  margin-bottom:10px;
+  font-weight:bold;
+  font-size:14px;
+}
+.price-new{color:#00c851}
+.price-old{color:#888;text-decoration:line-through;font-size:11px}
+
+/* CONTENT */
+.card-body{
+  padding:10px;
+  min-height:130px; /* chiều cao tối thiểu để nút MUA NGAY không lệch */
+}
+.title{font-weight:bold;font-size:14px;margin-bottom:6px}
+.info{font-size:12px;color:#555}
 
 /* BUTTON SIÊU NỔI */
 @keyframes glow {
@@ -64,7 +107,7 @@ body.show{opacity:1}
 }
 
 .btn-buy{
- margin-top:8px;
+ margin-top:0;
  width:100%;
  padding:10px;
  border:none;
@@ -151,16 +194,15 @@ body.show{opacity:1}
 <img src="images/clone1.png">
 <div class="badge-id">#CL001</div>
 <div class="stock">Còn: 12</div>
-<div class="price-tag">
-<span class="price-new">30K</span>
-<span class="price-old">50K</span>
-</div>
 </div>
 <div class="card-body">
-Clone cơ bản • Dễ liên kết
-<button class="btn-buy" onclick="event.stopPropagation(); goPage('clone/chitietclone.html')">
-MUA NGAY
-</button>
+<div class="title">Clone cơ bản</div>
+<div class="info">Dễ liên kết</div>
+<div class="price-box">
+<span class="price-new">30.000đ</span>
+<span class="price-old">50.000đ</span>
+</div>
+<button class="btn-buy" onclick="event.stopPropagation(); goPage('clone/chitietclone.html')">MUA NGAY</button>
 </div>
 </div>
 
@@ -170,16 +212,15 @@ MUA NGAY
 <img src="images/ball.jpg">
 <div class="badge-id">#BALL01</div>
 <div class="stock">Còn: 8</div>
-<div class="price-tag">
-<span class="price-new">40K</span>
-<span class="price-old">70K</span>
-</div>
 </div>
 <div class="card-body">
-Clone Ball • Tài nguyên cao
-<button class="btn-buy" onclick="event.stopPropagation(); goPage('clone/chitietclone.html')">
-MUA NGAY
-</button>
+<div class="title">Clone Ball</div>
+<div class="info">Tài nguyên cao</div>
+<div class="price-box">
+<span class="price-new">40.000đ</span>
+<span class="price-old">70.000đ</span>
+</div>
+<button class="btn-buy" onclick="event.stopPropagation(); goPage('clone/chitietclone.html')">MUA NGAY</button>
 </div>
 </div>
 
