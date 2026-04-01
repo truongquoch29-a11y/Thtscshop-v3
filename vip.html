@@ -44,16 +44,18 @@ body.show{opacity:1}
 .badge-id{
  position:absolute;
  top:8px;
- left:50%;
- transform:translateX(-50%);
- background:#3b82f6;
+ left:8px;
+ background:#1e3a8a; /* màu xanh thay cho cam */
  color:#fff;
- padding:6px 0;
- width:80px;  /* chiều rộng cố định */
- text-align:center;
+ padding:6px 12px;
  font-size:13px;
  font-weight:bold;
- border-radius:6px; /* bo góc đều */
+ border-radius:6px;
+ width:60px;  /* cố định chiều rộng */
+ height:24px; /* cố định chiều cao */
+ display:flex;
+ align-items:center;
+ justify-content:center;
  text-transform:uppercase;
 }
 
@@ -71,7 +73,10 @@ body.show{opacity:1}
 .price-old{color:#888;text-decoration:line-through}
 
 /* CONTENT */
-.card-body{padding:10px}
+.card-body{
+  padding:10px;
+  min-height:130px; /* chiều cao tối thiểu để nút MUA NGAY không lệch */
+}
 .title{font-weight:bold;font-size:14px;margin-bottom:6px}
 .info{font-size:12px;color:#555}
 
@@ -187,7 +192,7 @@ body.show{opacity:1}
   </div>
   <div class="card-body">
     <div class="title">Acc VIP Hiếm</div>
-    <div class="info">Rank top • Skin hiếm • Full vật phẩm</div>
+    <div class="info">Rank top • Skin hiếm </div>
     <div class="price-box">
       <span class="price-new">150.000đ</span>
       <span class="price-old">180.000đ</span>
