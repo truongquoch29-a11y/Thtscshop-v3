@@ -262,10 +262,10 @@ for(let i=1;i<=5;i++){
  img.src = "images/3m"+i+".jpg";
  img.onerror = function(){
   this.onerror=null;
-  this.src = "images/1m"+i+".png";
+  this.src = "images/3m"+i+".png";
   this.onerror = function(){
    this.onerror=null;
-   this.src = "images/1m"+i+".jpeg";
+   this.src = "images/3m"+i+".jpeg";
    this.onerror=function(){this.style.display='none'}
   }
  };
