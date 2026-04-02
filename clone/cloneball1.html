@@ -235,7 +235,7 @@ font-weight:bold
 function toggleMode(){ document.body.classList.toggle('dark'); }
 function goPage(link){window.location.href=link}
 function goLink(link){window.open(link,'_blank')}
-function goZalo(){window.open("https://zalo.me/0123456789","_blank")}
+function goZalo(){window.open("https://zalo.me/0702093263","_blank")}
 
 function toggleMenu(){
  document.getElementById('sideMenu').classList.toggle('active');
@@ -247,11 +247,11 @@ function closeMenu(){
 }
 
 /* FIXED DATA */
-let id = "#sara001";
+let id = "#ball001";
 document.getElementById('accCode').textContent = "Mã acc: " + id;
 
 /* FIXED PRICE */
-let price = "70000";
+let price = "50000";
 price = price.replace(/\B(?=(\d{3})+(?!\d))/g,".");
 document.getElementById('priceNew').textContent = price + " VND";
 
@@ -259,7 +259,7 @@ document.getElementById('priceNew').textContent = price + " VND";
 let box = document.getElementById('imgs');
 for(let i=1;i<=5;i++){
  let img = document.createElement('img');
- img.src = "images/1m"+i+".jpg";
+ img.src = "images/3m"+i+".jpg";
  img.onerror = function(){
   this.onerror=null;
   this.src = "images/1m"+i+".png";
