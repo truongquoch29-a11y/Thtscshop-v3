@@ -181,7 +181,10 @@ body.show{opacity:1}
       <span class="price-new">500.000đ</span>
       <span class="price-old">650.000đ</span>
     </div>
-    <button class="btn-buy" onclick="buyNow('VIP709','500.000','650.000')">MUA NGAY</button>
+<button class="btn-buy"
+onclick="buyNow('VIP709','500000','650000','Acc sara vip','Nhiều skin • Nhiều đồ')">
+MUA NGAY
+</button>
   </div>
 </div>
 
@@ -197,14 +200,17 @@ body.show{opacity:1}
       <span class="price-new">640.000đ</span>
       <span class="price-old">700.000đ</span>
     </div>
-    <button class="btn-buy" onclick="buyNow('VIP404','640.000','850.000')">MUA NGAY</button>
+    <button class="btn-buy"
+onclick="buyNow('VIP709','500000','650000','Acc sara vip','Nhiều skin • Nhiều đồ')">
+MUA NGAY
+    </button>
   </div>
 </div>
 
 
 <div class="card">
   <div class="card-img">
-    <img src="vip/images/3601.jpg">
+    <img src="vip/images/404.jpg">
     <div class="badge-id">#VIP3601</div>
   </div>
   <div class="card-body">
@@ -214,7 +220,10 @@ body.show{opacity:1}
       <span class="price-new">700.000đ</span>
       <span class="price-old">850.000đ</span>
     </div>
-    <button class="btn-buy" onclick="buyNow('VIP3601','700.000','850.000')">MUA NGAY</button>
+    <button class="btn-buy"
+onclick="buyNow('VIP404','500000','650000','Acc sara vip','Nhiều skin • Nhiều đồ')">
+MUA NGAY
+    </button>
   </div>
 </div>
 
@@ -269,14 +278,20 @@ function showPopup(){
  setTimeout(()=>{p.classList.remove('show')},3000);
 }
 
-function buyNow(id, priceNew, priceOld){
+<script>
+function buyNow(id, priceNew, priceOld, title, info){
+ localStorage.setItem('acc_id', id);
  localStorage.setItem('price_new', priceNew);
  localStorage.setItem('price_old', priceOld);
+ localStorage.setItem('title', title);
+ localStorage.setItem('info', info);
+
  document.body.classList.remove('show');
  setTimeout(()=>{
-  window.location.href = "vip/" + id + ".html";
+  window.location.href = "chitietvip.html";
  },200);
 }
+
 
 document.addEventListener('DOMContentLoaded',()=>{
  loadMode();
