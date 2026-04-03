@@ -317,6 +317,9 @@ document.addEventListener('DOMContentLoaded',()=>{
  setTimeout(()=>{document.body.classList.add('show')},50);
  setTimeout(showPopup,500);
 });
+ window.addEventListener('pageshow', function() {
+ document.body.classList.add('show');
+});
 </script>
 
 </body>
