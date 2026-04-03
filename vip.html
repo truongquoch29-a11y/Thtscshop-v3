@@ -170,7 +170,7 @@ body.show{opacity:1}
 
 <div class="card">
   <div class="card-img">
-    <img src="vip/images/709.jpg">
+    <img src="vip/images/709.jpg" onerror="this.onerror=null;this.src='vip/images/709.png';this.onerror=function(){this.src='vip/images/709.jpeg'}">
     <div class="badge-id">#VIP709</div>
   </div>
   <div class="card-body">
@@ -186,7 +186,7 @@ body.show{opacity:1}
 
 <div class="card">
   <div class="card-img">
-    <img src="vip/images/404.jpg">
+    <img src="vip/images/404.jpg" onerror="this.onerror=null;this.src='vip/images/404.png';this.onerror=function(){this.src='vip/images/404.jpeg'}">
     <div class="badge-id">#VIP404</div>
   </div>
   <div class="card-body">
@@ -202,7 +202,7 @@ body.show{opacity:1}
 
 <div class="card">
   <div class="card-img">
-    <img src="vip/images/3601.jpg">
+    <img src="vip/images/3601.jpg" onerror="this.onerror=null;this.src='vip/images/3601.png';this.onerror=function(){this.src='vip/images/3601.jpeg'}">
     <div class="badge-id">#VIP3601</div>
   </div>
   <div class="card-body">
@@ -266,7 +266,7 @@ function showPopup(){
  setTimeout(()=>{p.classList.remove('show')},3000);
 }
 
-/* SỬA DUY NHẤT PHẦN NÀY */
+/* CHỨC NĂNG CHUYỂN SANG FILE CHI TIẾT */
 function buyNow(id, priceNew){
  localStorage.setItem('acc_id', id);
  localStorage.setItem('price_new', priceNew);
