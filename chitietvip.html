@@ -264,10 +264,20 @@ document.getElementById('priceNew').textContent=price+" VND";
 
 /* LOAD ẢNH */
 let box=document.getElementById('imgs');
-let base=id.replace("VIP","");
+
+/* xác định loại acc */
+let isVIP = id.includes("VIP");
+let isTH = id.includes("TH");
+
+/* lấy số */
+let base = id.replace("VIP","").replace("TH","");
+
+/* chọn thư mục đúng */
+let folder = isVIP ? "vip/images/" : "thuong/images/";
+
 for(let i=1;i<=5;i++){
  let img=document.createElement('img');
- img.src="vip/images/"+base+"m"+i+".jpg";
+ img.src = folder + base + "m" + i + ".jpg";
  img.onerror=function(){this.style.display='none'};
  box.appendChild(img);
 }
