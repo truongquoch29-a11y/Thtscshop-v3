@@ -9,6 +9,54 @@
 body{margin:0;font-family:Arial;background:#f2f2f2;color:#000;transition:.3s;opacity:0}
 body.show{opacity:1}
 
+
+
+ .sold-out-box{
+  margin:15px;
+  padding:20px;
+  border-radius:16px;
+  background:#fff;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  animation:fadeIn .4s;
+}
+
+.sold-icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.sold-title{
+  font-size:20px;
+  font-weight:bold;
+  color:#ff3b3b;
+  margin-bottom:6px;
+}
+
+.sold-text{
+  font-size:14px;
+  margin-bottom:4px;
+}
+
+.sold-sub{
+  font-size:12px;
+  color:#888;
+}
+
+/* DARK MODE */
+.dark .sold-out-box{
+  background:#222;
+  color:#fff;
+}
+.dark .sold-sub{
+  color:#bbb;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
 /* HEADER */
 .header-box{margin:10px;background:#fff;border-radius:14px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 .logo-wrap{display:flex;align-items:center;gap:10px}
@@ -108,6 +156,17 @@ cursor:pointer;animation:glow 1.5s infinite;transition:.2s;
 <div class="section-title">📦 ACC THƯỜNG</div>
 
 <div class="container">
+ 
+<div class="sold-out-box">
+  <div class="sold-icon">❌</div>
+  <div class="sold-title">HẾT ACC</div>
+  <div class="sold-text">Hiện tại shop đã bán hết acc ở mục này</div>
+  <div class="sold-sub">Vui lòng quay lại sau</div>
+</div>
+
+
+
+ 
 <!---
 <div class="card">
 <div class="card-img">
