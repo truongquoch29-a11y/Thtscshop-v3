@@ -49,25 +49,12 @@ body.show{opacity:1}
 
 .card-body{padding:10px;font-size:13px}
 
-/* BUTTON ANIMATION */
-@keyframes glow {
-0%{box-shadow:0 0 5px #888}
-50%{box-shadow:0 0 18px #888}
-100%{box-shadow:0 0 5px #888}
-}
-
+/* BUTTON */
+@keyframes glow {0%{box-shadow:0 0 5px #888}50%{box-shadow:0 0 18px #888}100%{box-shadow:0 0 5px #888}}
 .btn-buy{
-margin-top:8px;
-width:100%;
-padding:10px;
-border:none;
-border-radius:25px;
-background:linear-gradient(90deg,#666,#444);
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-animation:glow 1.5s infinite;
-transition:.2s;
+margin-top:8px;width:100%;padding:10px;border:none;border-radius:25px;
+background:linear-gradient(90deg,#666,#444);color:#fff;font-weight:bold;
+cursor:pointer;animation:glow 1.5s infinite;transition:.2s;
 }
 .btn-buy:hover{transform:scale(1.08)}
 .btn-buy:active{transform:scale(0.95)}
@@ -134,26 +121,10 @@ transition:.2s;
 <span class="price-new">300.000đ</span>
 <span class="price-old">350.000đ</span>
 </div>
-<button class="btn-buy" onclick="buyNow('TH1','300.000','20.000')">MUA NGAY</button>
+<button class="btn-buy" onclick="buyNow('TH1','300000')">MUA NGAY</button>
 </div>
 </div>
 
-<!--<div class="card">
-<div class="card-img">
-<img src="thuong/images/2.png">
-<div class="badge-id">#TH002</div>
-</div>
-<div class="card-body">
-<div class="title">Acc Thường</div>
-<div class="info">Đủ chơi</div>
-<div class="price-box">
-<span class="price-new">15.000đ</span>
-<span class="price-old">25.000đ</span>
-</div>
-<button class="btn-buy" onclick="buyNow('TH002','15.000','25.000')">MUA NGAY</button>
-</div>
-</div>
--->
 </div>
 
 <div class="footer">
@@ -197,20 +168,27 @@ function closeMenu(){
  document.getElementById('overlay').classList.remove('active');
 }
 
-function buyNow(id, priceNew, priceOld){
+/* ĐÃ SỬA */
+function buyNow(id, priceNew){
  localStorage.setItem('acc_id', id);
  localStorage.setItem('price_new', priceNew);
- localStorage.setItem('price_old', priceOld);
+ localStorage.setItem('type','thuong');
+
  document.body.style.opacity='0';
  setTimeout(()=>{
-  window.location.href = "thuong/" + id + ".html";
+  window.location.href = "chitietvip.html";
  },200);
 }
+
+window.addEventListener('pageshow', function() {
+ document.body.classList.add('show');
+});
 
 document.addEventListener('DOMContentLoaded',()=>{
  loadMode();
  setTimeout(()=>{document.body.classList.add('show')},50);
 });
+ 
 </script>
 
 </body>
