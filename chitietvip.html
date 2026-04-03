@@ -196,7 +196,7 @@ font-weight:bold
 
 <div class="img-list" id="imgs"></div>
 
-<div class="info">
+<div class="info" id="infoBox">
 ⚠️ Acc dính xác minh<br>
 🚫 Game không bảo hành<br>
 🎮 Có nhiều vật phẩm giá trị
@@ -214,7 +214,7 @@ font-weight:bold
 <b>HỖ TRỢ KHÁCH HÀNG</b>
 <div>Liên hệ nhanh để được hỗ trợ</div>
 <div class="btn-group">
-<button onclick="goZalo('https://zalo.me/0702093263')">📞 Zalo</button>
+<button onclick="goZalo()">📞 Zalo</button>
 <button onclick="goLink('https://zalo.me/g/rbdkzp864')">👥 Group</button>
 <button onclick="goLink('https://www.facebook.com/share/16h1Xy3guE/?mibextid=wwXIfr')">📘 Facebook</button>
 </div>
@@ -246,23 +246,32 @@ function closeMenu(){
  document.getElementById('overlay').classList.remove('active');
 }
 
-let id=location.pathname.split('/').pop().replace('.html','');
-document.getElementById('accCode').textContent="Mã acc: "+id;
+/* ===== SỬA DUY NHẤT PHẦN NÀY ===== */
+let id = localStorage.getItem('acc_id') || "UNKNOWN";
+let title = localStorage.getItem('title') || "";
+let info = localStorage.getItem('info') || "";
 
-/* FORMAT PRICE xx.000 VND */
+document.getElementById('accCode').textContent = "Mã acc: " + id;
+if(title) document.querySelector('.acc-title').textContent = title;
+if(info) document.getElementById('infoBox').innerHTML = info;
+
+/* FORMAT PRICE */
 let price=localStorage.getItem('price_new') || "0";
 price=price.toString().replace(/[^0-9]/g,'');
 if(price.length<=3){ price=price+"000"; }
 price=price.replace(/\B(?=(\d{3})+(?!\d))/g,".");
 document.getElementById('priceNew').textContent=price+" VND";
 
+/* LOAD ẢNH */
 let box=document.getElementById('imgs');
+let base=id.replace("VIP","");
 for(let i=1;i<=5;i++){
  let img=document.createElement('img');
- img.src="images/"+id.replace("VIP","")+"m"+i+".jpg";
+ img.src="vip/images/"+base+"m"+i+".jpg";
  img.onerror=function(){this.style.display='none'};
  box.appendChild(img);
 }
+/* ===== END SỬA ===== */
 
 function openPopup(){
  document.getElementById('popupText').innerHTML =
