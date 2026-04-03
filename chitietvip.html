@@ -184,6 +184,10 @@ font-weight:bold
 </div>
 <div class="icon-group">
 <button class="icon-btn" onclick="toggleMode()">🌙</button>
+
+<!-- SỬA: thêm nút quay lại -->
+<button class="icon-btn" onclick="goBack()">⬅️</button>
+
 <button class="icon-btn menu-btn" onclick="toggleMenu()">
 <span></span><span></span><span></span>
 </button>
@@ -220,7 +224,7 @@ font-weight:bold
 </div>
 </div>
 
-<div class="popup" id="popup">
+<div id="popup" class="popup">
 <div class="popup-box">
 <h3>📢 THÔNG BÁO</h3>
 <p id="popupText"></p>
@@ -237,6 +241,15 @@ function goPage(link){window.location.href=link}
 function goLink(link){window.open(link,'_blank')}
 function goZalo(){window.open("https://zalo.me/0702093263","_blank")}
 
+/* SỬA: fix nút quay lại không trắng */
+function goBack(){
+ if(document.referrer && document.referrer.includes('vip.html')){
+   window.location.href = "../vip.html";
+ }else{
+   window.location.href = "../vip.html";
+ }
+}
+
 function toggleMenu(){
  document.getElementById('sideMenu').classList.toggle('active');
  document.getElementById('overlay').classList.toggle('active');
@@ -246,7 +259,7 @@ function closeMenu(){
  document.getElementById('overlay').classList.remove('active');
 }
 
-/* ===== SỬA DUY NHẤT PHẦN NÀY ===== */
+/* ===== GIỮ NGUYÊN ===== */
 let id = localStorage.getItem('acc_id') || "UNKNOWN";
 let title = localStorage.getItem('title') || "";
 let info = localStorage.getItem('info') || "";
@@ -255,14 +268,12 @@ document.getElementById('accCode').textContent = "Mã acc: " + id;
 if(title) document.querySelector('.acc-title').textContent = title;
 if(info) document.getElementById('infoBox').innerHTML = info;
 
-/* FORMAT PRICE */
 let price=localStorage.getItem('price_new') || "0";
 price=price.toString().replace(/[^0-9]/g,'');
 if(price.length<=3){ price=price+"000"; }
 price=price.replace(/\B(?=(\d{3})+(?!\d))/g,".");
 document.getElementById('priceNew').textContent=price+" VND";
 
-/* LOAD ẢNH */
 let box=document.getElementById('imgs');
 let base=id.replace("VIP","");
 for(let i=1;i<=5;i++){
@@ -271,7 +282,7 @@ for(let i=1;i<=5;i++){
  img.onerror=function(){this.style.display='none'};
  box.appendChild(img);
 }
-/* ===== END SỬA ===== */
+/* ===== END ===== */
 
 function openPopup(){
  document.getElementById('popupText').innerHTML =
